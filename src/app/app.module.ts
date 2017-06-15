@@ -8,12 +8,16 @@ import { ResultItemComponent } from './result-list/result-item/result-item.compo
 
 import { SoundCloudService } from './shared/sound-cloud.service';
 import { ResultListComponent } from './result-list/result-list.component';
+import { ImageContainerComponent } from './image-container/image-container.component';
+import { SearchHistoryComponent } from './search-history/search-history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResultItemComponent,
-    ResultListComponent
+    ResultListComponent,
+    ImageContainerComponent,
+    SearchHistoryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,26 @@
+:host() {
+  flex: 1 1 auto;
+}
+
+.left-layer {
+  flex-flow: column nowrap;
+}
+
+.body {
+  flex: 1 1 auto;
+}
+
+.footer {
+}
+
+.left-arrow {
+  background: url('../../assets/btns/next-arrow.svg') no-repeat;
+}
+
+.tiles {
+  background: url('../../assets/btns/tiles.svg') no-repeat;
+}
+
+.playlist {
+  background: url('../../assets/btns/playlist.svg') no-repeat;
+}

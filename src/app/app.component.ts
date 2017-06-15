@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { SoundCloudService } from './shared/sound-cloud.service';
-import { Response } from '@angular/http';
-import 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,20 +7,6 @@ import 'rxjs';
 })
 export class AppComponent {
 
-  constructor(private soundCloudService: SoundCloudService) { }
+  constructor() { }
 
-  onSearch(keyword: string) {
-    this.soundCloudService.searchSong(keyword)
-    .map(
-      (respone: Response) => {
-        let songsList = respone.json();
-        return songsList;
-      }
-    )
-    .subscribe(
-      (response) => {
-        console.info(response);
-      }
-    )
-  }
 }

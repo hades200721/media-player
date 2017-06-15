@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.icon {
+    background-size: 60px 30px;
+    height: 30px;
+    width: 30px;
+}

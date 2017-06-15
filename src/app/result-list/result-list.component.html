@@ -1,3 +1,17 @@
-<p>
-  result-list works!
-</p>
+<div class="left-layer top-0 bottom-0 flex border flex m2">
+  <div class="header">
+    <input #keyword type="text"/>
+    <button class="btn btn-primary" (click)="onSearch(keyword.value)" value="moby">Search</button>
+  </div>
+
+  <div class="flex-auto body">
+    <app-result-item *ngFor="let song of songsList" [data]="song">
+    </app-result-item>
+  </div>
+
+  <div class="footer clearfix">
+    <a class="left icon left-arrow" [class.disabled]="!hasNext" (click)="onNextList()"></a>
+    <a class="right icon tiles"></a>
+    <a class="right icon playlist"></a>
+  </div>
+</div>
