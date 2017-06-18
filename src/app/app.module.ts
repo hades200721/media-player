@@ -3,28 +3,29 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { ResultItemComponent } from './result-list/result-item/result-item.component';
 
-import { SoundCloudService } from './shared/sound-cloud.service';
-import { ResultListComponent } from './result-list/result-list.component';
-import { ImageContainerComponent } from './image-container/image-container.component';
-import { SearchHistoryComponent } from './search-history/search-history.component';
+import { MediaPlayerModule } from './media-player/media-player.module';
+import { HomePageComponent } from './home-page/home-page.component';
+import { WikipediaSearchComponent } from './wikipedia-search/wikipedia-search.component';
+import { NavigatorComponent } from './navigator/navigator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ResultItemComponent,
-    ResultListComponent,
-    ImageContainerComponent,
-    SearchHistoryComponent
+    HomePageComponent,
+    WikipediaSearchComponent,
+    NavigatorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MediaPlayerModule,
+    AppRoutingModule
   ],
-  providers: [SoundCloudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

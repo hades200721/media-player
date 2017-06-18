@@ -14,7 +14,7 @@ import { Song } from '../result-list/result-item/result-item.model';
 })
 export class ResultListComponent implements OnInit {
 
-  songsList: Song[] = [];
+  songsList: Song[] = [ new Song(1, 'testing', '', '') ];
   hasNext: string = '';
 
   constructor(private soundCloudService: SoundCloudService) { }
@@ -40,6 +40,7 @@ export class ResultListComponent implements OnInit {
       .subscribe(
       (response) => {
         console.info(response);
+
       })
   }
 
