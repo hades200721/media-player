@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { ResultItemComponent } from './result-list/result-item/result-item.component';
+import { WikipediaService } from './wikipedia-search/wikipedia.service';
 
 import { MediaPlayerModule } from './media-player/media-player.module';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -24,8 +26,11 @@ import { NavigatorComponent } from './navigator/navigator.component';
     FormsModule,
     HttpModule,
     MediaPlayerModule,
-    AppRoutingModule
+    AppRoutingModule,
+    JsonpModule,
+    ReactiveFormsModule
   ],
+  providers: [WikipediaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

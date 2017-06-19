@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/subject';
 import { Http, Headers } from '@angular/http';
-import { Song } from '../result-list/result-item/result-item.model';
+import { Song } from '../media-player/result-list/result-item/result-item.model';
 
 @Injectable()
 export class SoundCloudService {
 
-    subject = new Subject<Song>();
     private clientId: string = 'ggX0UomnLs0VmW7qZnCzw';
     header: Headers = new Headers({
         limit: 6

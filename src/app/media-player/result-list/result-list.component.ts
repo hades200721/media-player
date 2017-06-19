@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SoundCloudService } from '../shared/sound-cloud.service';
+import { SoundCloudService } from '../../shared/sound-cloud.service';
 import { Response } from '@angular/http';
 import 'rxjs';
 import * as _ from 'underscore';
