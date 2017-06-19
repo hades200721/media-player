@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Song } from '../../result-list/result-item/result-item.model';
+import { Song } from './result-item.model';
 
 @Component({
   selector: 'app-result-item',
