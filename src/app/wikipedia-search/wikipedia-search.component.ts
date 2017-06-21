@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { WikipediaService } from './wikipedia.service';
 import { initObservable } from '../shared/init-observable';
+import { Article } from './article.model';
 
 @Component({
   selector: 'app-wikipedia-search',
@@ -18,6 +19,7 @@ export class WikipediaSearchComponent implements OnInit {
 
   term = new FormControl();
   items: Observable<Array<string>>;
+  result: Article = new Article('', '', '');
   constructor(private wikipediaService: WikipediaService) {
   }
 
@@ -28,12 +30,11 @@ export class WikipediaSearchComponent implements OnInit {
       .switchMap(term => this.wikipediaService.search(term));
   }
 
-  findTerm(keyword: string) {
-    // this.wikipediaService.search(keyword)
-    //   .then(
-    //   (items) => {
-    //     this.items = items;
-    //   })
+  getArticle(term: string) {
+    this.wikipediaService.getResult(term)
+      .subscribe(
+      (response: Article) => this.result = new Article(response.pageid, response.extract, response.title)
+      );
   }
 
 

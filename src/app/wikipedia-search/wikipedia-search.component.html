@@ -1,7 +1,9 @@
 <div>
   <h2>Wikipedia Search</h2>
   <input type="text" [formControl]="term">
-  <ul>
-    <li *ngFor="let item of items | async"><a>{{item}}</a></li>
+  <ul class="list-group mt1">
+    <li *ngFor="let item of items | async" class="list-group-item"><a class="c-pointer" (click)="getArticle(item)">{{item}}</a></li>
   </ul>
+  <div class="result" [innerHTML]="result.extract">
+  </div>
 </div>

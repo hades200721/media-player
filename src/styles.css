@@ -9,3 +9,7 @@
     height: 30px;
     width: 30px;
 }
+
+.c-pointer {
+    cursor: pointer; 
+}
