@@ -23,17 +23,37 @@ export class SoundCloudService {
             (respone: Response) => {
                 const collection = respone.json().collection;
                 let songsList: Song[] = [];
-                const hasNext = respone.json().next_href;
+                const hasNext: string = respone.json().next_href;
                 collection.forEach(element => {
                     songsList.push(
                         new Song(element.id, element.title, element.description, element.artwork_url)
                     );
                 });
-                return songsList;
+                return { songs: songsList, nextLink: hasNext };
             })
             .subscribe(
-            (response: Song[]) => {
-                this.mediaPlayerService.setSongs(response);
+            (response: { songs: Song[], nextLink: string }) => {
+                this.mediaPlayerService.setSongs(response.songs, response.nextLink);
+            })
+    }
+
+    public getNextList(url: string) {
+        return this.http.get(url)
+            .map(
+            (respone: Response) => {
+                const collection = respone.json().collection;
+                let songsList: Song[] = [];
+                const hasNext: string = respone.json().next_href;
+                collection.forEach(element => {
+                    songsList.push(
+                        new Song(element.id, element.title, element.description, element.artwork_url)
+                    );
+                });
+                return { songs: songsList, nextLink: hasNext };
+            })
+            .subscribe(
+            (response: { songs: Song[], nextLink: string }) => {
+                this.mediaPlayerService.setSongs(response.songs, response.nextLink);
             })
     }
 

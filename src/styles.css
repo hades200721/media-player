@@ -4,6 +4,10 @@
     pointer-events: none;
 }
 
+a {
+    cursor: pointer;
+}
+
 hr {
     margin: 0 5px;
 }

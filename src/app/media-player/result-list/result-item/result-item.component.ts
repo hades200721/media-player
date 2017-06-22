@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MediaPlayerService } from '../../media-player.service';
 import { Song } from './result-item.model';
 
 @Component({
@@ -9,9 +10,15 @@ import { Song } from './result-item.model';
 export class ResultItemComponent implements OnInit {
 
   @Input('data') song: Song;
-  constructor() { }
+
+  constructor(private mediaPlayerService: MediaPlayerService) { }
 
   ngOnInit() {
   }
+
+  selectSong() {
+    this.mediaPlayerService.setSelectedSong(this.song.id);
+  }
+
 
 }

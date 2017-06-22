@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaPlayerService } from '../media-player/media-player.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Song } from '../media-player/result-list/result-item/result-item.model';
 
 @Component({
   selector: 'app-image-container',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageContainerComponent implements OnInit {
 
-  constructor() { }
+  song: Song = new Song();
+  subscription: Subscription;
+
+  constructor(private mediaPlayerService: MediaPlayerService) { }
 
   ngOnInit() {
+    this.subscription = this.mediaPlayerService.selectedSongChanged
+      .subscribe(
+      (song) => {
+        this.song = song;
+      }
+      )
   }
+
 
 }

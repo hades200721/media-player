@@ -16,7 +16,7 @@ import { Song } from '../result-list/result-item/result-item.model';
 })
 export class ResultListComponent implements OnInit {
 
-  songsList: any;
+  songsList: Song[];
   hasNext: string = '';
   subscription: Subscription;
 
@@ -26,8 +26,9 @@ export class ResultListComponent implements OnInit {
     this.songsList = this.mediaPlayerService.getSongs();
     this.subscription = this.mediaPlayerService.songsChanged
       .subscribe(
-      (songs) => {
+      ({ songs, next }) => {
         this.songsList = songs;
+        this.hasNext = next;
       }
       )
   }
@@ -36,24 +37,10 @@ export class ResultListComponent implements OnInit {
     this.soundCloudService.getSongsList(keyword);
   }
 
-  // onNextList() {
-  //   this.soundCloudService.next(this.hasNext)
-  //     .map(
-  //     (respone: Response) => {
-  //       this.songsList = [];
-  //       let songs = respone.json().collection;
-  //       this.hasNext = respone.json().next_href;
-  //       songs.forEach(element => {
-  //         this.songsList.push(
-  //           new Song(element.id, element.title, '', '')
-  //         );
-  //       });
-  //     })
-  //     .subscribe(
-  //     (response) => {
-  //       console.info(response);
-  //     })
-  // }
+  onNextList() {
+    const url = this.mediaPlayerService.getNextLink();
+    this.soundCloudService.getNextList(url);
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
