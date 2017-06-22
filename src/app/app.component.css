@@ -5,3 +5,12 @@
   right: 0;
   top: 0;
 }
+
+.main-page {
+  height: 100%;
+}
+
+.canvas {
+  background-color: #49a5bf;
+  height: 100%;
+}
