@@ -14,13 +14,15 @@ import { SoundCloudService } from './shared/sound-cloud.service';
 import { HomePageComponent } from './home-page/home-page.component';
 import { WikipediaSearchComponent } from './wikipedia-search/wikipedia-search.component';
 import { NavigatorComponent } from './navigator/navigator.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     WikipediaSearchComponent,
-    NavigatorComponent
+    NavigatorComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

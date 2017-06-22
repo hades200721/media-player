@@ -4,6 +4,10 @@
     pointer-events: none;
 }
 
+hr {
+    margin: 0 5px;
+}
+
 .icon {
     background-size: 60px 30px;
     height: 30px;

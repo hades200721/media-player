@@ -1,0 +1,49 @@
+.navbar-default {
+  height: 100%;
+  width: auto;
+}
+
+.header {
+  height: 50px;
+  line-height: 50px;
+}
+
+.navbar-nav li {
+  float: none;
+}
+
+.navbar-nav li:hover {
+  background: #484848;
+  color: #7e7e7e;
+}
+
+.menu {
+  transition-property: width;
+  transition-duration: 1s;
+  width: 0px;
+}
+
+.menu.expanded {
+  width: 190px;
+}
+
+.navbar-default > div {
+  height: 100%;
+  float: left;
+}
+
+.expand-collapse-section {
+  box-shadow: 2px 0px 2px 0px rgba(0,0,0,0.75);
+  width: 10px;
+  background: #e4e4e4;
+}
+
+.expand .center-y svg {
+  transform: rotate(180deg);
+}
+
+.center-y {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}

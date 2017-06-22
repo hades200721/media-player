@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigatorComponent implements OnInit {
 
+  private menuIsOpen: boolean = true;
+  
   constructor() { }
 
   ngOnInit() {
