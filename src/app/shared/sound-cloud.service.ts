@@ -9,16 +9,15 @@ import { formatTime } from '../shared/helpers';
 @Injectable()
 export class SoundCloudService {
 
-    private clientId: string = 'ggX0UomnLs0VmW7qZnCzw';
-    header: Headers = new Headers({
-        limit: 6
-        // linked_partitioning: 1
-    });
+    private config = {
+        clientId: 'ggX0UomnLs0VmW7qZnCzw',
+        limit: 16
+    };
 
     constructor(private http: Http, private mediaPlayerService: MediaPlayerService) { }
 
     public getSongsList(keyword: string) {
-        let url = 'http://api.soundcloud.com/tracks?client_id=' + this.clientId + '&linked_partitioning=1&q=' + keyword + '&limit=6';
+        let url = 'http://api.soundcloud.com/tracks?client_id=' + this.config.clientId + '&linked_partitioning=1&q=' + keyword + '&limit=' + this.config.limit;
         return this.http.get(url)
             .map(
             (respone: Response) => {

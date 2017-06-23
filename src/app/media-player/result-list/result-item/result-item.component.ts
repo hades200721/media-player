@@ -10,6 +10,7 @@ import { Song } from './result-item.model';
 export class ResultItemComponent implements OnInit {
 
   @Input('data') songs: Song[];
+  @Input('listview') list: boolean = true;
 
   constructor(private mediaPlayerService: MediaPlayerService) { }
 

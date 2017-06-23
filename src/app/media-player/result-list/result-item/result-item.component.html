@@ -1,4 +1,4 @@
-<table class="table table-inverse">
+<table *ngIf="list" class="table table-inverse">
   <thead>
     <tr>
       <th>#</th>
@@ -16,3 +16,7 @@
     </tr>
   </tbody>
 </table>
+
+<div *ngIf="!list" class="inline-block">
+  <img class="m1" *ngFor="let thumbnail of songs" title="{{thumbnail.name}}" [src]="thumbnail.imagePath" height="200" width="200">
+</div>
