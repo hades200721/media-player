@@ -1,7 +1,7 @@
-<div class="left-layer top-0 bottom-0 flex border flex m2">
-  <div class="header">
-    <input #keyword type="text"/>
-    <button class="btn btn-primary" (click)="onSearch(keyword.value)" value="moby">Search</button>
+<div class="left-layer top-0 bottom-0 flex border flex p2 m2">
+  <div class="header flex">
+    <input #keyword type="text" class="flex-auto" (keyup)="onSearch(keyword.value)"/>
+    <button class="btn btn-primary ml2" (click)="onSearch(keyword.value)" value="moby">Search</button>
   </div>
 
   <div class="flex-auto body">
@@ -11,7 +11,11 @@
 
   <div class="footer clearfix">
     <a class="left icon left-arrow" [class.disabled]="!hasNext" (click)="onNextList()"></a>
-    <a class="right icon tiles"></a>
-    <a class="right icon playlist"></a>
+    <a [tooltip]="myTooltip" class="right icon tiles" (mouseenter)="tooltipView = 'thumbnail'" ></a>
+    <a [tooltip]="myTooltip" class="right icon playlist" (mouseenter)="tooltipView = 'file list'"></a>
   </div>
 </div>
+
+<tooltip-content #myTooltip [animation]="true" placement="left">
+    <b>Change to <span style="color: #ffc520">{{tooltipView}}</span> view</b>.
+</tooltip-content>

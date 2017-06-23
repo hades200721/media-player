@@ -1,0 +1,9 @@
+.song-wrapper {
+    transform: translateX(0px);
+}
+
+.song-wrapper:hover {
+    text-decoration: underline;
+    animation-duration: 1s;
+    transform: translateX(10px);
+}

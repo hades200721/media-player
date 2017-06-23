@@ -19,6 +19,7 @@ export class ResultListComponent implements OnInit {
   songsList: Song[];
   hasNext: string = '';
   subscription: Subscription;
+  tooltipView : string = '';
 
   constructor(private soundCloudService: SoundCloudService, private mediaPlayerService: MediaPlayerService) { }
 
