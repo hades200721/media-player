@@ -1,9 +1,9 @@
 export class SearchHistory {
     public keyword: string;
-    public date: string;
+    private date: number;
 
-    constructor(keyword: string, date: string) {
+    constructor(keyword: string) {
         this.keyword = keyword;
-        this.date = date;
+        this.date = Date.now();
     }
 }

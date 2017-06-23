@@ -6,7 +6,9 @@ import { Subscription } from 'rxjs/subscription';
 
 import * as _ from 'underscore';
 
+import { SearchHistoryService } from '../search-history/search-history.service';
 import { Song } from '../result-list/result-item/result-item.model';
+import { SearchHistory } from '../search-history/search-history.model';
 
 
 @Component({
@@ -19,10 +21,14 @@ export class ResultListComponent implements OnInit {
   songsList: Song[];
   hasNext: string = '';
   subscription: Subscription;
-  tooltipView : string = 'list';
+  tooltipView: string = 'list';
   listView: boolean = true;
 
-  constructor(private soundCloudService: SoundCloudService, private mediaPlayerService: MediaPlayerService) { }
+  constructor(
+    private soundCloudService: SoundCloudService,
+    private mediaPlayerService: MediaPlayerService,
+    private searchHistoryService: SearchHistoryService,
+  ) { }
 
   ngOnInit() {
     this.songsList = this.mediaPlayerService.getSongs();
@@ -39,6 +45,11 @@ export class ResultListComponent implements OnInit {
     this.soundCloudService.getSongsList(keyword);
   }
 
+  addToSearchHistory(keyword: string) {
+    let data = new SearchHistory(keyword);
+    this.searchHistoryService.addSearchHistory(data);
+  }
+
   onNextList() {
     const url = this.mediaPlayerService.getNextLink();
     this.soundCloudService.getNextList(url);
@@ -47,7 +58,7 @@ export class ResultListComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  
+
 }
 
 let pluckMany = function (source, propertiesToPluck: string[]) {

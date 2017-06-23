@@ -15,6 +15,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { WikipediaSearchComponent } from './wikipedia-search/wikipedia-search.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { AboutComponent } from './about/about.component';
+import { LocalStorageService } from './shared/local-storage.service';
+import { SearchHistoryService } from './media-player/search-history/search-history.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,13 @@ import { AboutComponent } from './about/about.component';
     JsonpModule,
     ReactiveFormsModule
   ],
-  providers: [WikipediaService, MediaPlayerService, SoundCloudService],
+  providers: [
+    WikipediaService,
+    MediaPlayerService,
+    SoundCloudService,
+    LocalStorageService,
+    SearchHistoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
