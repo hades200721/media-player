@@ -1,9 +1,18 @@
+.table-inverse {
+  background-color: #292b2c;
+  color: whitesmoke;;
+}
+
 .song-wrapper {
-    transform: translateX(0px);
+  background-color: transparent;
+  transform: translateX(0px);
+  transition-duration: 0.5s;
+  transition-property: background, transform;
 }
 
 .song-wrapper:hover {
-    text-decoration: underline;
-    animation-duration: 1s;
-    transform: translateX(10px);
+  background-color: #e2e2e2;
+  color: #292b2c;
+  text-decoration: underline;
+  transform: translateX(10px);
 }

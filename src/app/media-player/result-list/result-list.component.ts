@@ -46,9 +46,7 @@ export class ResultListComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-
-
+  
 }
 
 let pluckMany = function (source, propertiesToPluck: string[]) {

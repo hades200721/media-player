@@ -9,15 +9,15 @@ import { Song } from './result-item.model';
 })
 export class ResultItemComponent implements OnInit {
 
-  @Input('data') song: Song;
+  @Input('data') songs: Song[];
 
   constructor(private mediaPlayerService: MediaPlayerService) { }
 
   ngOnInit() {
   }
 
-  selectSong() {
-    this.mediaPlayerService.setSelectedSong(this.song.id);
+  selectSong(id: number) {
+    this.mediaPlayerService.setSelectedSong(id);
   }
 
 

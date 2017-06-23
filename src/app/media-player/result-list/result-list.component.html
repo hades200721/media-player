@@ -4,9 +4,8 @@
     <button class="btn btn-primary ml2" (click)="onSearch(keyword.value)" value="moby">Search</button>
   </div>
 
-  <div class="flex-auto body">
-    <app-result-item *ngFor="let song of songsList" [data]="song">
-    </app-result-item>
+  <div class="flex-auto overflow-hidden body">
+    <app-result-item [data]="songsList"></app-result-item>
   </div>
 
   <div class="footer clearfix">

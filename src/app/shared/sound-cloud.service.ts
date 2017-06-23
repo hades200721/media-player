@@ -4,6 +4,7 @@ import { Http, Headers, Response } from '@angular/http';
 import 'rxjs';
 import { Song } from '../media-player/result-list/result-item/result-item.model';
 import { MediaPlayerService } from '../media-player/media-player.service';
+import { formatTime } from '../shared/helpers';
 
 @Injectable()
 export class SoundCloudService {
@@ -25,8 +26,9 @@ export class SoundCloudService {
                 let songsList: Song[] = [];
                 const hasNext: string = respone.json().next_href;
                 collection.forEach(element => {
+                    const duration = formatTime(element.duration);
                     songsList.push(
-                        new Song(element.id, element.title, element.description, element.artwork_url)
+                        new Song(element.id, element.title, element.genre, element.description, duration, element.artwork_url)
                     );
                 });
                 return { songs: songsList, nextLink: hasNext };
@@ -46,7 +48,7 @@ export class SoundCloudService {
                 const hasNext: string = respone.json().next_href;
                 collection.forEach(element => {
                     songsList.push(
-                        new Song(element.id, element.title, element.description, element.artwork_url)
+                        new Song(element.id, element.title, element.genre, element.description, element.duration, element.artwork_url)
                     );
                 });
                 return { songs: songsList, nextLink: hasNext };
