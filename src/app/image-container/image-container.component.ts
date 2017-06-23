@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MediaPlayerService } from '../media-player/media-player.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Song } from '../media-player/result-list/result-item/result-item.model';
@@ -8,7 +8,7 @@ import { Song } from '../media-player/result-list/result-item/result-item.model'
   templateUrl: './image-container.component.html',
   styleUrls: ['./image-container.component.css']
 })
-export class ImageContainerComponent implements OnInit {
+export class ImageContainerComponent implements OnInit, OnDestroy {
 
   song: Song = new Song();
   subscription: Subscription;
@@ -22,6 +22,10 @@ export class ImageContainerComponent implements OnInit {
         this.song = song;
       }
       )
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 

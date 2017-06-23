@@ -1,17 +1,15 @@
-.navbar-default {
+.left-menu {
+  color: whitesmoke;
   height: 100%;
+  background: #565656;
 }
 
 .header {
   height: 50px;
-  line-height: 50px;
+  align-items: center;
 }
 
-.navbar-nav li {
-  float: none;
-}
-
-.navbar-nav li:hover {
+li:hover {
   background: #484848;
   color: #7e7e7e;
 }
@@ -26,7 +24,7 @@
   width: 190px;
 }
 
-.navbar-default > div {
+.left-menu > div {
   height: 100%;
   float: left;
 }
@@ -45,4 +43,11 @@
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
+}
+
+.homepage::after {
+  background-image: url('../../assets/images/homepage.svg');
+  content: '';
+  display: block;
+  height: inherit;
 }

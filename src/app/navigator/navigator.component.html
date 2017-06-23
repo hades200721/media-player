@@ -1,14 +1,15 @@
-<nav class="left overflow-hidden navbar-default">
+<nav class="left overflow-hidden left-menu">
     <div class="menu" [class.expanded]="menuIsOpen">
-        <div class="header">
-            <a [routerLink]="['']" class="block center bold nowrap">Home page</a>
+        <div class="flex header">
+            <a [routerLink]="['']" class="inline-block mx2 icon homepage"></a>
+            <a [routerLink]="['']" class="center bold nowrap">Home page</a>
         </div>
         <hr class="seperator">
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li routerLinkActive="active"><a [routerLink]="['music-player']">Music player</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['wiki']">Wikipedia</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['about']">About</a></li>
+        <div class="block flex">
+            <ul class="flex-auto nav">
+                <li class="my1" routerLinkActive="active"><a [routerLink]="['music-player']">Music player</a></li>
+                <li class="my1" routerLinkActive="active"><a [routerLink]="['wiki']">Wikipedia</a></li>
+                <li class="my1" routerLinkActive="active"><a [routerLink]="['about']">About</a></li>
             </ul>
         </div>
     </div>

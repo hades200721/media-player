@@ -6,6 +6,11 @@
 
 a {
     cursor: pointer;
+    color: inherit;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
 }
 
 hr {
@@ -13,7 +18,6 @@ hr {
 }
 
 .icon {
-    background-size: 60px 30px;
     height: 30px;
     width: 30px;
 }

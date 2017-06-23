@@ -8,6 +8,6 @@ export class Song {
         this.id = id || 0;
         this.name = name || '';
         this.description = desc || '';
-        this.imagePath = imagePath || '';
+        this.imagePath = (imagePath) ? imagePath.replace('large','t500x500') : '';
     }
 }
