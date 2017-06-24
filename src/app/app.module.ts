@@ -17,6 +17,7 @@ import { NavigatorComponent } from './navigator/navigator.component';
 import { AboutComponent } from './about/about.component';
 import { LocalStorageService } from './shared/local-storage.service';
 import { SearchHistoryService } from './media-player/search-history/search-history.service';
+import { PlayerControlsComponent } from './player-controls/player-controls.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SearchHistoryService } from './media-player/search-history/search-histo
     HomePageComponent,
     WikipediaSearchComponent,
     NavigatorComponent,
-    AboutComponent
+    AboutComponent,
+    PlayerControlsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,8 @@
 <app-navigator class="left" style="width: auto; height: 100%;"></app-navigator>
 
 <div class="left-0 right-0 main-page">
-    <div class="flex canvas p2">
-        <router-outlet></router-outlet>
+    <div class="flex flex-column canvas">
+        <router-outlet class="p2"></router-outlet>
+        <app-player-controls> </app-player-controls>
     </div>
 </div>

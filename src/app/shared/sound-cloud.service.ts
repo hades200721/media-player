@@ -27,7 +27,7 @@ export class SoundCloudService {
                 collection.forEach(element => {
                     const duration = formatTime(element.duration);
                     songsList.push(
-                        new Song(element.id, element.title, element.genre, element.description, duration, element.artwork_url)
+                        new Song(element.id, element.title, element.user.username, element.genre, element.description, duration, element.artwork_url)
                     );
                 });
                 return { songs: songsList, nextLink: hasNext };
@@ -47,7 +47,7 @@ export class SoundCloudService {
                 const hasNext: string = respone.json().next_href;
                 collection.forEach(element => {
                     songsList.push(
-                        new Song(element.id, element.title, element.genre, element.description, element.duration, element.artwork_url)
+                        new Song(element.id, element.title, element.user.username, element.genre, element.description, element.duration, element.artwork_url)
                     );
                 });
                 return { songs: songsList, nextLink: hasNext };

@@ -1,0 +1,49 @@
+.playControls {
+  background-color: #f2f2f2;
+  border-top: 1px solid rgba(0,0,0,.15);
+  bottom: 0;
+  height: 50px;
+  flex: 0 0 auto;
+  align-self: flex-end;
+  width: 100%;
+}
+
+.playControls-wrapper {
+  width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.elements {
+  align-items: center;
+}
+
+.play-control-icon {
+  height: 24px;
+  outline: 0;
+  width: 24px;
+}
+
+.previous {
+  background: url('../../assets/controls/previous.svg') no-repeat;
+}
+
+.next {
+  background: url('../../assets/controls/next.svg') no-repeat;
+}
+
+.play {
+  background: url('../../assets/controls/play.svg') no-repeat;
+}
+
+.pause {
+  background: url('../../assets/controls/pause.svg') no-repeat;
+}
+
+.shuffle {
+  background: url('../../assets/controls/shuffle.svg') no-repeat;   
+}
+
+.repeat {
+  background: url('../../assets/controls/repeat.svg') no-repeat;   
+}
