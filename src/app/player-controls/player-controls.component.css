@@ -37,19 +37,44 @@
 }
 
 .time-passed {
-    color: #f50;
-    width: 50px;
+  color: #f50;
+  width: 50px;
 }
 
 .duration {
-    color: #333;
-    width: 50px;
+  color: #333;
+  width: 50px;
 }
 
 .progress-background {
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
+  height: 2px;
+  background-color: #ccc;
+  width: 560px;
+}
+
+.progressBar {
+  height: 2px;
+  background-color: #f50;
+  transition: transform 50ms;
+  transform: translateX(-560px);
+  width: 100%;
+}
+
+.progressHandle {
+    background-color: #f50;
+    border-radius: 50%;
+    height: 8px;
+    opacity: 0;
+    transition: opacity 150ms;
+    width: 8px;
+}
+
+.progressWrapper {
+  align-items: center;
+}
+
+.progressWrapper:hover .progressHandle {
+  opacity: 1;
 }
 
 .previous {

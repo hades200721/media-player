@@ -11,13 +11,14 @@
       <div class="flex flex-auto mx2 timeline">
 
         <div class="right-align time-passed">
-          <span aria-hidden="true">0:00</span>
+          <span>{{timePassed()}}</span>
         </div>
 
-        <div class="relative" role="progressbar" aria-valuemax="201370" aria-valuenow="9251.682" aria-valuetext="9 seconds">
-          <div class="progress-background"></div>
-          <div class="playbackTimeline__progressBar" style="width: 24px;"></div>
-          <div class="playbackTimeline__progressHandle sc-ir" style="left: 24px;"></div>
+        <div class="relative flex mx2 progressWrapper" role="progressbar" data-valuemax="201370" data-valuenow="9251.682">
+          <div class="relative overflow-hidden progress-background" style="width: 560px">
+            <div class="absolute progressBar"></div>
+          </div>
+          <div class="absolute c-pointer progressHandle" style="left: 24px;"></div>
         </div>
 
         <div class="left-align c-pointer duration" (click)="showDuration = !showDuration">

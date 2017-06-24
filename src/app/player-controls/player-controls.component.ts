@@ -15,7 +15,7 @@ export class PlayerControlsComponent implements OnInit {
   subscription: Subscription;
 
   showDuration: boolean = true;
-  passedTime: number = 5;
+  passedTime: number = 5000; // in milliseconds
 
   constructor(private mediaPlayerService: MediaPlayerService) { }
 
@@ -33,7 +33,11 @@ export class PlayerControlsComponent implements OnInit {
   }
 
   timeLeft() {
-    return formatTime(this.song.duration - this.passedTime * 1000);
+    return formatTime(this.song.duration - this.passedTime);
+  }
+
+  timePassed() {
+    return formatTime(this.passedTime);
   }
 
 
