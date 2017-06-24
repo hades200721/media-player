@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchHistory } from './search-history.model';
-import { LocalStorageService } from '../../shared/local-storage.service';
+import { SearchHistoryService } from './search-history.service';
 
 @Component({
   selector: 'app-search-history',
@@ -9,17 +9,17 @@ import { LocalStorageService } from '../../shared/local-storage.service';
 })
 export class SearchHistoryComponent implements OnInit {
 
-  searchHistory: SearchHistory[] = [];
+  searchHistory: SearchHistory[];
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private searchHistoryService: SearchHistoryService) { }
 
   ngOnInit() {
-    this.searchHistory = this.localStorageService.getObject('search_history');
+    this.searchHistory = this.searchHistoryService.getHistoryList();
 
-    this.localStorageService.localStorageChange
+    this.searchHistoryService.localStorageChange
       .subscribe(
       (localStorageKey: string) => {
-        this.searchHistory = this.localStorageService.getObject(localStorageKey);
+        this.searchHistory = this.searchHistoryService.getHistoryList();
       }
       )
   }
