@@ -1,32 +1,36 @@
-<div class="playControls">
-    <div class="flex p0 playControls-wrapper">
-      <div class="relative flex elements">
-        <button class="border-none play-control-icon previous"></button>
-        <button class="border-none play-control-icon play"></button>
-        <button class="border-none play-control-icon next"></button>
-        <button class="border-none play-control-icon shuffle"></button>
-        <button class="border-none play-control-icon repeat"></button>
+<div *ngIf="song" class="playControls">
+  <div class="flex p0 playControls-wrapper">
+    <div class="relative flex elements">
+      <button class="border-none ml2 play-control-icon previous"></button>
+      <button class="border-none ml2 play-control-icon play"></button>
+      <button class="border-none ml2 play-control-icon next"></button>
+      <button class="border-none ml2 play-control-icon shuffle"></button>
+      <button class="border-none ml2 play-control-icon repeat"></button>
 
-        <!--TIMELINE-->
-        <!--<div class="playControls__timeline">
-          <div class="playbackTimeline is-scrubbable has-sound">
-            <div class="playbackTimeline__timePassed"><span class="sc-visuallyhidden">Current time: 9 seconds</span><span aria-hidden="true">0:09</span></div>
-            <div class="playbackTimeline__progressWrapper" role="progressbar" aria-valuemax="201370" aria-valuenow="9251.682" aria-valuetext="9 seconds">
-              <div class="playbackTimeline__progressBackground"></div>
-              <div class="playbackTimeline__progressBar" style="width: 24px;"></div>
-              <div class="playbackTimeline__progressHandle sc-ir" style="left: 24px;"></div>
-            </div>
-            <div class="playbackTimeline__duration"><span class="sc-visuallyhidden">Duration: 3 minutes 21 seconds</span><span aria-hidden="true">3:21</span></div>
-            <div class="playbackTimeline__snippetIndicator">
-              <span class="sc-snippet-badge sc-snippet-badge-small">Preview</span>
-            </div>
-          </div>
-        </div>-->
+      <!--TIMELINE-->
+      <div class="flex flex-auto mx2 timeline">
+
+        <div class="right-align time-passed">
+          <span aria-hidden="true">0:00</span>
+        </div>
+
+        <div class="relative" role="progressbar" aria-valuemax="201370" aria-valuenow="9251.682" aria-valuetext="9 seconds">
+          <div class="progress-background"></div>
+          <div class="playbackTimeline__progressBar" style="width: 24px;"></div>
+          <div class="playbackTimeline__progressHandle sc-ir" style="left: 24px;"></div>
+        </div>
+
+        <div class="left-align c-pointer duration" (click)="showDuration = !showDuration">
+          <span *ngIf="showDuration">{{song.durationStr}}</span>
+          <span *ngIf="!showDuration" [innerHTML]="timeLeft()"></span>
+        </div>
+
+      </div>
 
 
 
-        <!--SONGINFO-->
-        <!--<div class="playControls__soundBadge">
+      <!--SONGINFO-->
+      <!--<div class="playControls__soundBadge">
           <div class="playbackSoundBadge m-hasQueue paused">
             <a href="/jack-and-the-weatherman/jack-and-the-weatherman-till-the-sun-comes-up" class="playbackSoundBadge__avatar sc-media-image"
               tabindex="-1">
@@ -48,6 +52,6 @@
         </div>-->
 
 
-      </div>
     </div>
+  </div>
 </div>

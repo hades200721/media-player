@@ -21,7 +21,35 @@
 .play-control-icon {
   height: 24px;
   outline: 0;
+  transition-duration: 0.3s;
+  transition-property: transform;
   width: 24px;
+}
+
+.play-control-icon:hover {
+  border: 1px solid #b6b6b6;
+  opacity: 0.5;
+  transform: scale(1.25);
+}
+
+.timeline {
+  font-size: 11px;
+}
+
+.time-passed {
+    color: #f50;
+    width: 50px;
+}
+
+.duration {
+    color: #333;
+    width: 50px;
+}
+
+.progress-background {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
 }
 
 .previous {
@@ -46,4 +74,12 @@
 
 .repeat {
   background: url('../../assets/controls/repeat.svg') no-repeat;   
+}
+
+.repeat-one {
+  background: url('../../assets/controls/repeat-one.svg') no-repeat;   
+}
+
+.repeat-all {
+  background: url('../../assets/controls/repeat-all.svg') no-repeat;   
 }
