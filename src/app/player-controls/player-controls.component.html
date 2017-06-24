@@ -14,7 +14,7 @@
           <span>{{timePassed()}}</span>
         </div>
 
-        <div class="relative flex mx2 progressWrapper" role="progressbar" data-valuemax="201370" data-valuenow="9251.682">
+        <div class="relative flex py2 mx2 progressWrapper" role="progressbar" data-valuemax="201370" data-valuenow="9251.682">
           <div class="relative overflow-hidden progress-background" style="width: 560px">
             <div class="absolute progressBar"></div>
           </div>
@@ -28,29 +28,27 @@
 
       </div>
 
-
+      <!--VOLUME-->
+      <div class="relative flex volume-balancer mr2" [class.muted]="muted" [class.expanded]="expanded" 
+        (mouseenter)="expanded = true" (mouseleave)="expanded = false" (click)="muted = !muted" data-level="2">
+        <button class="border-none ml2 play-control-icon volume"></button>
+        <div class="absolute overflow-hidden sliderWrapper center-x" role="slider" aria-valuemin="0" aria-valuemax="1" aria-label="Volume" aria-valuenow="0.2">
+          <div class="absolute center-x sliderBackground"></div>
+          <div class="absolute center-x sliderProgress" style="height: 18.4px;"></div>
+          <div class="absolute center-x c-pointer progressHandle sliderHandle" style="top: 83.6px;"></div>
+        </div>
+      </div>
 
       <!--SONGINFO-->
-      <!--<div class="playControls__soundBadge">
-          <div class="playbackSoundBadge m-hasQueue paused">
-            <a href="/jack-and-the-weatherman/jack-and-the-weatherman-till-the-sun-comes-up" class="playbackSoundBadge__avatar sc-media-image"
-              tabindex="-1">
-              <div class="image m-sound image__lightOutline readOnly customImage sc-artwork sc-artwork-placeholder-0 m-loaded" style="height: 30px; width: 30px;"><span style="background-image: url(&quot;https://i1.sndcdn.com/artworks-000210141179-vb5ttg-t50x50.jpg&quot;); width: 30px; height: 30px; opacity: 1;"
-                  class="sc-artwork sc-artwork-placeholder-0  image__full g-opacity-transition" aria-label="Jack And The Weatherman - Till The Sun Comes Up"
-                  aria-role="img"></span>
-              </div>
-            </a>
-            <div class="playbackSoundBadge__titleContextContainer">
-              <a href="/jack-and-the-weatherman" class="playbackSoundBadge__lightLink sc-link-light sc-truncate" title="JackandtheWeatherman">JackandtheWeatherman</a>
-              <div class="playbackSoundBadge__title">
-                <a href="/jack-and-the-weatherman/jack-and-the-weatherman-till-the-sun-comes-up" class="playbackSoundBadge__titleLink sc-truncate"
-                  title="Jack And The Weatherman - Till The Sun Comes Up">
-        <span class="sc-visuallyhidden">Current track: Jack And The Weatherman - Till The Sun Comes Up</span><span aria-hidden="true">Jack And The Weatherman - Till The Sun Comes Up</span>
-      </a>
-              </div>
-            </div>
+      <div class="flex soundBadge">
+        <div class="flex playbackSoundBadge">
+          <img class="avatar" [src]="song.imagePath" title="{{song.name}}" width=30 height=30>
+          <div class="mx2 contextContainer">
+            <div class="truncate context-artist">{{song.artist}}</div>
+            <div class="truncate context-title">{{song.name}}</div>
           </div>
-        </div>-->
+        </div>
+      </div>
 
 
     </div>

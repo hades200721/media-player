@@ -32,8 +32,13 @@
   transform: scale(1.25);
 }
 
-.timeline {
+.elements {
   font-size: 11px;
+}
+
+.timeline {  
+  height: 100%;
+  align-items: center;
 }
 
 .time-passed {
@@ -61,12 +66,12 @@
 }
 
 .progressHandle {
-    background-color: #f50;
-    border-radius: 50%;
-    height: 8px;
-    opacity: 0;
-    transition: opacity 150ms;
-    width: 8px;
+  background-color: #f50;
+  border-radius: 50%;
+  height: 8px;
+  opacity: 0;
+  transition: opacity 150ms;
+  width: 8px;
 }
 
 .progressWrapper {
@@ -75,6 +80,98 @@
 
 .progressWrapper:hover .progressHandle {
   opacity: 1;
+}
+
+.sliderWrapper {
+  bottom: 40px;
+  width: 30px;
+  height: 0;
+  transition: height 100ms;
+  background-color: #f2f2f2;
+  border: 1px solid transparent;
+}
+
+.sliderWrapper:before {
+  bottom: -10px;
+  border: 5px solid #000;
+  border-color: transparent transparent #ccc #ccc;
+  box-shadow: -3px 3px 4px rgba(0,0,0,.1);
+  box-sizing: border-box;
+  content: '';
+  left: 8px;
+  position: absolute;
+  transform-origin: 0 0;
+  transform: rotate(-45deg);
+}
+
+.sliderWrapper:after {
+  border: 4px solid #000;
+  border-color: transparent transparent #f2f2f2 #f2f2f2;
+  bottom: -8px;
+  box-sizing: border-box;
+  content: '';
+  left: 9px;
+  position: absolute;
+  transform-origin: 0 0;
+  transform: rotate(-45deg);
+}
+
+.volume-balancer {
+  height: 100%;
+  align-items: center;
+}
+
+.volume-balancer.expanded .sliderWrapper {
+  border-color: #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  overflow: initial;
+  height: 118px;
+}
+
+.sliderBackground { 
+  background-color: #ccc;
+  bottom: 13px;
+  height: 92px;
+  width: 2px;
+}
+
+.sliderProgress {
+  background: #f50;
+  bottom: 13px;
+  width: 2px;
+}
+
+.sliderHandle {
+  opacity: 1;
+}
+
+.soundBadge {
+  box-sizing: border-box;
+  width: 360px;
+  height: 48px;
+  padding: 0 8px;
+}
+
+.soundBadge .avatar {
+  border: 1px solid rgba(0,0,0,.1);
+}
+
+.playbackSoundBadge {  
+  align-items: center;
+}
+
+.contextContainer {
+  width: 250px;
+  line-height: 1.5em;
+  flex-grow: 1;
+}
+
+.context-artist {
+  color: #999;
+}
+
+.context-title {
+  color: #000;
 }
 
 .previous {
@@ -107,4 +204,12 @@
 
 .repeat-all {
   background: url('../../assets/controls/repeat-all.svg') no-repeat;   
+}
+
+.volume {
+  background: url('../../assets/controls/volume.svg') no-repeat;   
+}
+
+.muted .volume {
+  background: url('../../assets/controls/volume-muted.svg') no-repeat;   
 }

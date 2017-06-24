@@ -14,8 +14,10 @@ export class PlayerControlsComponent implements OnInit {
   song: Song = null;
   subscription: Subscription;
 
+  expanded: boolean = false;
   showDuration: boolean = true;
   passedTime: number = 5000; // in milliseconds
+  muted: boolean = false;
 
   constructor(private mediaPlayerService: MediaPlayerService) { }
 
