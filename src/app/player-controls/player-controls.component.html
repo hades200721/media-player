@@ -5,7 +5,8 @@
       <button class="border-none ml2 play-control-icon play"></button>
       <button class="border-none ml2 play-control-icon next"></button>
       <button class="border-none ml2 play-control-icon shuffle"></button>
-      <button class="border-none ml2 play-control-icon repeat"></button>
+      <button class="border-none ml2 play-control-icon {{repeatOption[currentRepeatOption]}}" (click)="currentRepeatOption = (currentRepeatOption + 1) % 3">
+        </button>
 
       <!--TIMELINE-->
       <div class="flex flex-auto mx2 timeline">
@@ -29,10 +30,11 @@
       </div>
 
       <!--VOLUME-->
-      <div class="relative flex volume-balancer mr2" [class.muted]="muted" [class.expanded]="expanded" 
-        (mouseenter)="expanded = true" (mouseleave)="expanded = false" (click)="muted = !muted" data-level="2">
+      <div class="relative flex volume-balancer mr2" [class.muted]="muted" [class.expanded]="expanded" (mouseenter)="expanded = true"
+        (mouseleave)="expanded = false" (click)="muted = !muted" data-level="2">
         <button class="border-none ml2 play-control-icon volume"></button>
-        <div class="absolute overflow-hidden sliderWrapper center-x" role="slider" aria-valuemin="0" aria-valuemax="1" aria-label="Volume" aria-valuenow="0.2">
+        <div class="absolute overflow-hidden sliderWrapper center-x" role="slider" aria-valuemin="0" aria-valuemax="1" aria-label="Volume"
+          aria-valuenow="0.2">
           <div class="absolute center-x sliderBackground"></div>
           <div class="absolute center-x sliderProgress" style="height: 18.4px;"></div>
           <div class="absolute center-x c-pointer progressHandle sliderHandle" style="top: 83.6px;"></div>

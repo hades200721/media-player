@@ -1,7 +1,8 @@
 <div class="right-layer right-0 top-0 bottom-0 border p2 m2">
   <h4>Search history:</h4>
   <hr class="mb2">
-  <div *ngFor="let search of searchHistory" (click)="searchHistoryService.setSearchKeyword(search.keyword)">
-    {{search.keyword}} ({{search.date | date:"MM/dd H:mm:ss"}})
+  <div class="c-pointer flex" *ngFor="let search of searchHistory" (click)="searchHistoryService.setSearchKeyword(search.keyword)">
+    <span class="flex-auto"> {{search.keyword}}</span>
+    <span> ({{search.date | date:"MM/dd H:mm:ss"}})</span>
   </div>
 </div>

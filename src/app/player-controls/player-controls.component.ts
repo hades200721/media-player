@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { Song } from '../media-player/result-list/result-item/result-item.model';
 import { formatTime } from '../shared/helpers';
 
+
+
 @Component({
   selector: 'app-player-controls',
   templateUrl: './player-controls.component.html',
@@ -11,11 +13,12 @@ import { formatTime } from '../shared/helpers';
 })
 export class PlayerControlsComponent implements OnInit {
 
+  repeatOption: Array<string> = ['repeat', 'repeat-one', 'repeat-all'];
   song: Song = null;
   subscription: Subscription;
-
   expanded: boolean = false;
   showDuration: boolean = true;
+  currentRepeatOption: number = 0;
   passedTime: number = 5000; // in milliseconds
   muted: boolean = false;
 
