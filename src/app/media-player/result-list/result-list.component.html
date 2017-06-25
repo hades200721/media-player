@@ -4,7 +4,7 @@
     <button class="btn btn-primary ml2" (click)="addToSearchHistory()">Search</button>
   </div>
 
-  <div class="flex-auto overflow-hidden body">
+  <div #bodyContainer class="my2 body" [perfect-scrollbar]="config">
     <app-result-item [data]="songsList" [listview]="listView"></app-result-item>
   </div>
 

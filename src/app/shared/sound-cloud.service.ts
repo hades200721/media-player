@@ -11,7 +11,7 @@ export class SoundCloudService {
 
     private config = {
         clientId: 'ggX0UomnLs0VmW7qZnCzw',
-        limit: 16
+        limit: 25
     };
 
     constructor(private http: Http, private mediaPlayerService: MediaPlayerService) { }

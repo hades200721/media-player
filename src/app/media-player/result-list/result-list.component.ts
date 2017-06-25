@@ -10,6 +10,8 @@ import { SearchHistoryService } from '../search-history/search-history.service';
 import { Song } from '../result-list/result-item/result-item.model';
 import { SearchHistory } from '../search-history/search-history.model';
 
+declare var require: any;
+var Ps = require('perfect-scrollbar');
 
 @Component({
   selector: 'app-result-list',
@@ -19,12 +21,15 @@ import { SearchHistory } from '../search-history/search-history.model';
 export class ResultListComponent implements OnInit {
 
   @ViewChild('keyword') keyword: ElementRef;
+  @ViewChild('bodyContainer') body: ElementRef;
+  
   songsList: Song[];
   hasNext: string = '';
   subscription: Subscription;
   searchSubscription: Subscription;
   tooltipView: string = 'list';
   listView: boolean = true;
+  config = {};
 
   constructor(
     private soundCloudService: SoundCloudService,
@@ -46,11 +51,14 @@ export class ResultListComponent implements OnInit {
       .subscribe(
       (keyword) => {
         this.keyword.nativeElement.value = keyword;
-        this.onSearch();
+        if (keyword) {
+          this.onSearch();
+        }
       }
       );
 
-      (<HTMLElement>this.keyword.nativeElement).addEventListener('input', e => this.onSearch());
+      Ps.initialize(this.body.nativeElement);
+    (<HTMLElement>this.keyword.nativeElement).addEventListener('input', e => this.onSearch());
   }
 
   onSearch() {

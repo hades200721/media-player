@@ -1,3 +1,7 @@
+:host() {
+  display: block;
+}
+
 .table-inverse {
   background-color: #292b2c;
   color: whitesmoke;;
