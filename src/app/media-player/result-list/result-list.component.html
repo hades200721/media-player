@@ -1,7 +1,7 @@
 <div class="left-layer top-0 bottom-0 flex border flex p2 m2">
   <div class="header flex">
-    <input #keyword type="text" class="flex-auto" (keyup)="onSearch(keyword.value)"/>
-    <button class="btn btn-primary ml2" (click)="addToSearchHistory(keyword.value)">Search</button>
+    <input #keyword type="text" class="flex-auto"/>
+    <button class="btn btn-primary ml2" (click)="addToSearchHistory()">Search</button>
   </div>
 
   <div class="flex-auto overflow-hidden body">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SoundCloudService } from '../../shared/sound-cloud.service';
 import { Response } from '@angular/http';
 import { MediaPlayerService } from '../media-player.service';
@@ -18,9 +18,11 @@ import { SearchHistory } from '../search-history/search-history.model';
 })
 export class ResultListComponent implements OnInit {
 
+  @ViewChild('keyword') keyword: ElementRef;
   songsList: Song[];
   hasNext: string = '';
   subscription: Subscription;
+  searchSubscription: Subscription;
   tooltipView: string = 'list';
   listView: boolean = true;
 
@@ -38,15 +40,25 @@ export class ResultListComponent implements OnInit {
         this.songsList = songs;
         this.hasNext = next;
       }
-      )
+      );
+
+    this.searchSubscription = this.searchHistoryService.data
+      .subscribe(
+      (keyword) => {
+        this.keyword.nativeElement.value = keyword;
+        this.onSearch();
+      }
+      );
+
+      (<HTMLElement>this.keyword.nativeElement).addEventListener('input', e => this.onSearch());
   }
 
-  onSearch(keyword: string) {
-    this.soundCloudService.getSongsList(keyword);
+  onSearch() {
+    this.soundCloudService.getSongsList(this.keyword.nativeElement.value);
   }
 
-  addToSearchHistory(keyword: string) {
-    let data = new SearchHistory(keyword);
+  addToSearchHistory() {
+    let data = new SearchHistory(this.keyword.nativeElement.value);
     this.searchHistoryService.addSearchHistory(data);
   }
 
@@ -57,6 +69,7 @@ export class ResultListComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.searchSubscription.unsubscribe();
   }
 
 }
