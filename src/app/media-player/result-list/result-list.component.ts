@@ -52,8 +52,8 @@ export class ResultListComponent implements OnInit {
     this.fragmentSubscription = this.route.fragment
       .subscribe(
       (keyword: string) => {
-        this.keyword.nativeElement.value = keyword;
         if (keyword) {
+          this.keyword.nativeElement.value = keyword;
           this.onSearch();
         }
       }

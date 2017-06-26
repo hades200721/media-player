@@ -30,7 +30,6 @@ export class SearchHistoryComponent implements OnInit {
   }
 
   onSearchHistoryClick(keyword) {
-    this.searchHistoryService.addSearchHistory(keyword);
     this.router.navigate(['search'], { fragment: keyword });
   }
 
