@@ -1,4 +1,4 @@
-<div *ngIf="song" class="playControls">
+<div [@controls]='state' *ngIf="song" class="playControls">
   <div class="flex p0 playControls-wrapper">
     <div class="relative flex elements">
       <button class="border-none ml2 play-control-icon previous"></button>

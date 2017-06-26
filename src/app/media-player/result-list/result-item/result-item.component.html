@@ -21,6 +21,7 @@
   </table>
 
   <div *ngIf="!list" class="inline-block">
-    <img class="m1" *ngFor="let thumbnail of songs" title="{{thumbnail.name}}" [src]="thumbnail.imagePath" height="175" width="175">
+    <img class="m1 c-pointer" *ngFor="let thumbnail of songs; let i = index" title="{{thumbnail.name}}" 
+    [src]="thumbnail.imagePath" height="175" width="175" (click)="selectSong(thumbnail.id)">
   </div>
 </div>

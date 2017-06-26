@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 body {
+  color: whitesmoke;
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
   overflow: hidden;
+}
+
+input {
+  background-color: #292b2c;
 }
 
 .disabled {

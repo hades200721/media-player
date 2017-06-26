@@ -4,7 +4,6 @@
 
 .table-inverse {
   background-color: #292b2c;
-  color: whitesmoke;;
 }
 
 .song-wrapper {
@@ -17,6 +16,4 @@
 .song-wrapper:hover {
   background-color: #e2e2e2;
   color: #292b2c;
-  text-decoration: underline;
-  transform: translateX(10px);
 }

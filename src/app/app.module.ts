@@ -16,8 +16,10 @@ import { WikipediaSearchComponent } from './wikipedia-search/wikipedia-search.co
 import { NavigatorComponent } from './navigator/navigator.component';
 import { AboutComponent } from './about/about.component';
 import { LocalStorageService } from './shared/local-storage.service';
-import { SearchHistoryService } from './media-player/search-history/search-history.service';
+import { SearchHistoryComponent } from './search-history/search-history.component';
+import { SearchHistoryService } from './search-history/search-history.service';
 import { PlayerControlsComponent } from './player-controls/player-controls.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { PlayerControlsComponent } from './player-controls/player-controls.compo
     WikipediaSearchComponent,
     NavigatorComponent,
     AboutComponent,
-    PlayerControlsComponent
+    PlayerControlsComponent,
+    PlaylistComponent,
+    SearchHistoryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,15 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SoundCloudService } from '../../shared/sound-cloud.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 import { MediaPlayerService } from '../media-player.service';
 import { Subscription } from 'rxjs/subscription';
 
 import * as _ from 'underscore';
 
-import { SearchHistoryService } from '../search-history/search-history.service';
 import { Song } from '../result-list/result-item/result-item.model';
-import { SearchHistory } from '../search-history/search-history.model';
+import { SearchHistoryService } from '../../search-history/search-history.service';
+import { SearchHistory } from '../../search-history/search-history.model';
 
 declare var require: any;
 var Ps = require('perfect-scrollbar');
@@ -22,16 +23,17 @@ export class ResultListComponent implements OnInit {
 
   @ViewChild('keyword') keyword: ElementRef;
   @ViewChild('bodyContainer') body: ElementRef;
-  
+
+  fragmentSubscription: Subscription;
   songsList: Song[];
   hasNext: string = '';
   subscription: Subscription;
-  searchSubscription: Subscription;
   tooltipView: string = 'list';
   listView: boolean = true;
   config = {};
 
   constructor(
+    private route: ActivatedRoute,
     private soundCloudService: SoundCloudService,
     private mediaPlayerService: MediaPlayerService,
     private searchHistoryService: SearchHistoryService,
@@ -47,9 +49,9 @@ export class ResultListComponent implements OnInit {
       }
       );
 
-    this.searchSubscription = this.searchHistoryService.data
+    this.fragmentSubscription = this.route.fragment
       .subscribe(
-      (keyword) => {
+      (keyword: string) => {
         this.keyword.nativeElement.value = keyword;
         if (keyword) {
           this.onSearch();
@@ -57,7 +59,7 @@ export class ResultListComponent implements OnInit {
       }
       );
 
-      Ps.initialize(this.body.nativeElement);
+    Ps.initialize(this.body.nativeElement);
     (<HTMLElement>this.keyword.nativeElement).addEventListener('input', e => this.onSearch());
   }
 
@@ -77,7 +79,7 @@ export class ResultListComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.searchSubscription.unsubscribe();
+    this.fragmentSubscription.unsubscribe();
   }
 
 }
