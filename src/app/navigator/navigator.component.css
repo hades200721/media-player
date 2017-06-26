@@ -9,9 +9,22 @@
   align-items: center;
 }
 
-li:hover {
-  background: #484848;
-  color: #7e7e7e;
+.navigator li {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  margin: 10px 0;
+  padding-left: 8px;
+}
+
+.navigator li.active {
+  background-color: #bebebe;
+  color: #4b4b4b;
+}
+
+.navigator li:hover {
+  background-color: #eee;
+  color: #565656;
 }
 
 .menu {
@@ -51,9 +64,55 @@ li:hover {
   width: 100%;
 }
 
-.homepage::after {
-  background-image: url('../../assets/images/homepage.svg');
-  content: '';
+.main-nav .nav li {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav .icon {
+  padding: 0;
+}
+
+.icon::after {
   display: block;
+  font-family: awesomeFonts;
+  font-size: 20px;
   height: inherit;
+  text-align: center;
+}
+
+.homepage::after {
+  content: '\f015';
+}
+
+.search::after {
+  content: '\f002';
+}
+
+.about::after {
+  content: '\f05a';
+}
+
+.wikipedia::after {
+  content: '\f266';
+}
+
+.log-in::after {
+  content: '\f090';
+}
+
+.history::after {
+  content: '\f1da';
+}
+
+.play-list::after {
+  content: '\f0ca';
+}
+
+.register::after {
+  content: '\f25d';
+}
+
+.log-out::after {
+  content: '\f08b';
 }

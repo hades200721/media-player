@@ -1,28 +1,50 @@
 <nav class="left overflow-hidden left-menu">
     <div class="flex menu" [class.expanded]="menuIsOpen">
-        <div class="flex my2 header">
-            <a [routerLink]="['']" class="inline-block mx2 icon homepage"></a>
-            <a [routerLink]="['']" class="center bold nowrap">Home page</a>
+        <div class="flex my2 header" [routerLink]="['']" >
+            <a class="inline-block mx2 icon homepage"></a>
+            <a class="center bold nowrap">Home page</a>
         </div>
         <hr class="seperator">
         <div class="flex flex-auto main-nav">
-            <ul class="flex-auto nav">
-                <li class="my1" routerLinkActive="active"><a [routerLink]="['search']">Search</a></li>
-                <!--<li class="my1" routerLinkActive="active"><a [routerLink]="['playlist']">Playlist</a></li>
-                <li class="my1" routerLinkActive="active"><a [routerLink]="['search-history']">Search History</a></li>-->
-                <li class="my1" routerLinkActive="active"><a [routerLink]="['wiki']">Wikipedia</a></li>
-                <li class="my1" routerLinkActive="active"><a [routerLink]="['about']">About</a></li>
+            <ul class="flex-auto navigator">
+                <li [routerLink]="['search']" routerLinkActive="active">
+                    <a class="icon search"></a>
+                    <a class="flex-auto">Search</a>
+                </li>
+                <li [routerLink]="['wiki']" routerLinkActive="active">
+                    <a class="icon wikipedia"></a>
+                    <a class="flex-auto">Wikipedia</a>
+                </li>
+                <li [routerLink]="['about']" routerLinkActive="active">
+                    <a class="icon about"></a>
+                    <a class="flex-auto">About</a>
+                </li>
             </ul>
 
-            <ul class="nav">
+            <ul class="navigator">
                 <template [ngIf]="!loggedIn">
-                    <li><a (click)="logIn()">Login</a></li>
-                    <li><a [routerLink]="['signup']">Register</a></li>
+                    <li (click)="logIn()">
+                        <a class="icon log-in"></a>
+                        <a class="flex-auto">Login</a>
+                    </li>
+                    <li [routerLink]="['signup']">
+                        <a class="icon register"></a>
+                        <a>Register</a>
+                    </li>
                 </template>
                 <template [ngIf]="loggedIn">
-                    <li class="my1" routerLinkActive="active"><a [routerLink]="['playlist']">Playlist</a></li>
-                    <li class="my1" routerLinkActive="active"><a [routerLink]="['search-history']">Search History</a></li>
-                    <li class="my1"><a (click)="logOut()">Log out</a></li>
+                    <li [routerLink]="['playlist']" routerLinkActive="active">
+                        <a class="icon play-list"></a>
+                        <a>Playlist</a>
+                    </li>
+                    <li [routerLink]="['search-history']" routerLinkActive="active">
+                        <a class="icon history"></a>
+                        <a>Search History</a>
+                    </li>
+                    <li (click)="logOut()">
+                        <a class="icon log-out"></a>
+                        <a>Log out</a>
+                    </li>
                 </template>
             </ul>
         </div>

@@ -5,6 +5,11 @@ body {
   overflow: hidden;
 }
 
+@font-face {
+  font-family: awesomeFonts;
+  src: url('./assets/fontawesome.woff2');
+}
+
 input {
   background-color: #292b2c;
 }
@@ -16,6 +21,13 @@ input {
 
 .disabled:active {
   pointer-events: none;
+}
+
+.navigator {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
