@@ -6,15 +6,19 @@ import { SearchHistoryComponent } from './search-history/search-history.componen
 import { WikipediaSearchComponent } from './wikipedia-search/wikipedia-search.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { AboutComponent } from './about/about.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 const appRoutes: Routes = [
-    { path: '', component: HomePageComponent},
-    { path: 'search', component: MediaPlayerComponent},
-    { path: 'search-history', component: SearchHistoryComponent},
-    { path: 'playlist', component: PlaylistComponent},
-    { path: 'wiki', component: WikipediaSearchComponent},
-    { path: 'about', component: AboutComponent}
+    { path: '', component: HomePageComponent },
+    { path: 'search', component: MediaPlayerComponent },
+    { path: 'search-history', component: SearchHistoryComponent },
+    { path: 'playlist', component: PlaylistComponent },
+    { path: 'wiki', component: WikipediaSearchComponent },
+    { path: 'about', component: AboutComponent },
+    { path: 'sign-in', component: SigninComponent },
+    { path: 'sign-up', component: SignupComponent }
 ]
 
 @NgModule({

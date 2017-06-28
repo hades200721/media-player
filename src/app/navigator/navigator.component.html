@@ -23,11 +23,11 @@
 
             <ul class="navigator">
                 <template [ngIf]="!loggedIn">
-                    <li (click)="logIn()">
+                    <li [routerLink]="['sign-in']" routerLinkActive="active">
                         <a class="icon log-in"></a>
                         <a class="flex-auto">Login</a>
                     </li>
-                    <li [routerLink]="['signup']">
+                    <li [routerLink]="['sign-up']" routerLinkActive="active">
                         <a class="icon register"></a>
                         <a>Register</a>
                     </li>

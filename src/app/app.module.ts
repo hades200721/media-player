@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { WikipediaService } from './wikipedia-search/wikipedia.service';
+import { AuthService } from './auth/auth.service';
 
 import { MediaPlayerModule } from './media-player/media-player.module';
 import { MediaPlayerService } from './media-player/media-player.service';
@@ -20,6 +21,8 @@ import { SearchHistoryComponent } from './search-history/search-history.componen
 import { SearchHistoryService } from './search-history/search-history.service';
 import { PlayerControlsComponent } from './player-controls/player-controls.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { PlaylistComponent } from './playlist/playlist.component';
     AboutComponent,
     PlayerControlsComponent,
     PlaylistComponent,
-    SearchHistoryComponent
+    SearchHistoryComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { PlaylistComponent } from './playlist/playlist.component';
     MediaPlayerService,
     SoundCloudService,
     LocalStorageService,
-    SearchHistoryService
+    SearchHistoryService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
