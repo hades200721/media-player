@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { DataStorageService } from '../shared/data-storage.service';
 import { Song } from '../media-player/result-list/result-item/result-item.model';
 
 
@@ -9,7 +8,7 @@ export class PlaylistService {
 
     playlistChanged = new Subject<Song[]>();
 
-    constructor(private dataStorageService: DataStorageService) { }
+    constructor() { }
 
     private playlist: Song[] = [];
 
@@ -41,10 +40,5 @@ export class PlaylistService {
         this.playlist.splice(index, 1);
         this.playlistChanged.next(this.playlist.slice());
     }
-
-    savePlaylist() {
-        this.dataStorageService.savePlaylist(this.playlist.slice());
-    }
-
 
 }

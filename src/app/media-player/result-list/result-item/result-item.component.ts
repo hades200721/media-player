@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MediaPlayerService } from '../../media-player.service';
 import { PlaylistService } from '../../../playlist/playlist.service';
 import { AuthService } from '../../../auth/auth.service';
+import { DataStorageService } from '../../../shared/data-storage.service';
 import { Song } from './result-item.model';
 
 @Component({
@@ -17,7 +18,8 @@ export class ResultItemComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private playlistService: PlaylistService,
-    private mediaPlayerService: MediaPlayerService
+    private mediaPlayerService: MediaPlayerService,
+    private dataStorageService: DataStorageService    
   ) { }
 
   ngOnInit() {
@@ -34,7 +36,7 @@ export class ResultItemComponent implements OnInit {
     } else {
       this.playlistService.removeSongFromPlaylist(songIndex);
     }
-    this.playlistService.savePlaylist();
+    this.dataStorageService.savePlaylist();
   }
 
   playlistInclude(id: number) {

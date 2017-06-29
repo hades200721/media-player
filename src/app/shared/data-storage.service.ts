@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs';
 
+import { PlaylistService } from '../playlist/playlist.service';
 import { AuthService } from '../auth/auth.service';
 import { Song } from '../media-player/result-list/result-item/result-item.model';
 
@@ -13,7 +14,8 @@ export class DataStorageService {
 
     constructor(
         private http: Http,
-        private authService: AuthService
+        private authService: AuthService,
+        private playlistService: PlaylistService
     ) { }
 
     getPlaylistSongs() {
@@ -27,9 +29,11 @@ export class DataStorageService {
             });
     }
 
-    savePlaylist(playlist: Song[]) {
+    savePlaylist() {
         const token = this.authService.getToken();
         const url = SERVERNAME + DATABASENAME + '.json?auth=' + token;
+
+        const playlist = this.playlistService.getRecipes();
         return this.http.put(url, playlist)
             .subscribe(
             (response: Response) => {
