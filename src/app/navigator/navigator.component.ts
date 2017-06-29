@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-navigator',
@@ -10,17 +11,13 @@ export class NavigatorComponent implements OnInit {
   private menuIsOpen: boolean = true;
   private loggedIn: boolean = true;
   
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  logIn() {
-    this.loggedIn = true;
-  }
-
   logOut() {
-    this.loggedIn = false;
+    this.authService.logOut();
   }
 
 }

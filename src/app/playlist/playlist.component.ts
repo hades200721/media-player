@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataStorageService } from '../shared/data-storage.service';
+import { Song } from '../media-player/result-list/result-item/result-item.model';
 
 @Component({
   selector: 'app-playlist',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistComponent implements OnInit {
 
-  constructor() { }
+  playlist: Song[] = [];
+
+  constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
+    this.dataStorageService.getPlaylistSongs().subscribe(
+      (songs: any) => {
+        debugger;
+        this.playlist = songs;
+      }
+    )
   }
 
 }

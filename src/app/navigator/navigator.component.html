@@ -22,7 +22,7 @@
             </ul>
 
             <ul class="navigator">
-                <template [ngIf]="!loggedIn">
+                <template [ngIf]="!authService.isAuthenticated()">
                     <li [routerLink]="['sign-in']" routerLinkActive="active">
                         <a class="icon log-in"></a>
                         <a class="flex-auto">Login</a>
@@ -32,7 +32,7 @@
                         <a>Register</a>
                     </li>
                 </template>
-                <template [ngIf]="loggedIn">
+                <template [ngIf]="authService.isAuthenticated()">
                     <li [routerLink]="['playlist']" routerLinkActive="active">
                         <a class="icon play-list"></a>
                         <a>Playlist</a>
