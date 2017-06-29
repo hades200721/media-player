@@ -1,3 +1,22 @@
-<p>
-  signup works!
-</p>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-1 col-md-offset-2">
+    <form (ngSubmit)="onSignup(form)" #form="ngForm">
+      <div class="form-group">
+        <label for="email">Mail</label>
+        <input class="form-control valid" placeholder="admin@admin.com"
+              type="email" id="email" name="email" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="password icon">Password</label>
+        <input class="form-control valid" placeholder="123456"
+              [type]="hidePassword ? 'password' : 'text'" id="password" name="password" minlength="6" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="showPassword">Show password</label>
+        <input class="form-control checkbox"  (change)="hidePassword = !hidePassword"
+               type="checkbox" id="showPassword" name="showPassword">
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Sign Up</button>
+    </form>
+  </div>
+</div>

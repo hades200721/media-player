@@ -14,6 +14,12 @@ input {
   background-color: #292b2c;
 }
 
+input.form-control:focus {
+  outline: none;
+  background-color: whitesmoke;
+  color: #555;
+}
+
 .disabled {
   cursor: not-allowed;
   opacity: 0.5;
@@ -46,6 +52,10 @@ hr {
 .icon {
   height: 30px;
   width: 30px;
+}
+
+input.icon {
+  width: auto;
 }
 
 .c-pointer {

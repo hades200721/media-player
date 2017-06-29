@@ -1,0 +1,23 @@
+form input {
+  text-indent: 25px;
+}
+
+input.ng-touched.ng-valid {
+  background: url('../assets/images/mark.svg');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 5px;
+  color: whitesmoke;
+}
+
+input.ng-touched.ng-invalid {
+  background: url('../assets/images/invalid.svg');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 5px;
+  color: whitesmoke;
+}
+
+.form-control,checkbox {
+    width: auto;
+}
