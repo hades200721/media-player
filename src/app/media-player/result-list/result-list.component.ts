@@ -59,7 +59,7 @@ export class ResultListComponent implements OnInit {
       }
       );
 
-    Ps.initialize(this.body.nativeElement);
+    Ps.initialize(this.body.nativeElement); // prefect scroller init
     (<HTMLElement>this.keyword.nativeElement).addEventListener('input', e => this.onSearch());
   }
 

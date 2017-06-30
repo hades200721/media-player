@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngFor="let playlistItem of playlist; let i = index" class="play-list-container c-pointer">
+  <div *ngFor="let playlistItem of playlist; let i = index" class="play-list-container c-pointer" (click)="mediaPlayerService.setSelectedSong(playlistItem);">
     <div class="flex info">
       <div class="relative img icon playing">
         <img height="60" width="60" [src]="playlistItem.imagePath">

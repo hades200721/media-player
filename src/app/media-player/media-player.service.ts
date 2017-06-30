@@ -25,9 +25,8 @@ export class MediaPlayerService {
         this.songsChanged.next({ songs: this.songs.slice(), next: this.nextLink });
     }
 
-    public setSelectedSong(id: number) {
-        this.selectedSong = this.songs.find(song => { return song.id === id });
-        this.selectedSongChanged.next(this.selectedSong);
+    public setSelectedSong(song: Song) {
+        this.selectedSongChanged.next(song);
     }
 
 }

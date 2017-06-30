@@ -12,11 +12,11 @@ export class PlaylistService {
 
     private playlist: Song[] = [];
 
-    getRecipes() {
+    getPlaylist() {
         return this.playlist.slice();
     }
 
-    setRecipes(songs: Song[]) {
+    setPlaylist(songs: Song[]) {
         this.playlist = songs;
         this.playlistChanged.next(this.playlist.slice());
     }

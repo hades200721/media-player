@@ -21,23 +21,27 @@ export class DataStorageService {
     getPlaylistSongs() {
         const token = this.authService.getToken();
         const url = SERVERNAME + DATABASENAME + '.json?auth=' + token;
-        // 'https://music-player-55870.firebaseio.com/' + DATABASENAME + '.json?auth=' + token
         return this.http.get(url)
             .map(
             (respone: Response) => {
-                return respone;
-            });
+                return respone.json();
+            })
+            .subscribe(
+            (playlist: any) => {
+                this.playlistService.setPlaylist(playlist);
+            }
+            );
     }
 
     savePlaylist() {
         const token = this.authService.getToken();
         const url = SERVERNAME + DATABASENAME + '.json?auth=' + token;
 
-        const playlist = this.playlistService.getRecipes();
+        const playlist = this.playlistService.getPlaylist();
         return this.http.put(url, playlist)
             .subscribe(
             (response: Response) => {
-                console.info(response);
+                // console.info(response);
             }
             )
     }

@@ -25,10 +25,6 @@ export class ResultItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectSong(id: number) {
-    this.mediaPlayerService.setSelectedSong(id);
-  }
-
   addRemoveToPlaylist(song: Song) {
     let songIndex = this.playlistService.songExists(song.id);
     if (songIndex === -1) {
