@@ -54,6 +54,14 @@ hr {
   width: 30px;
 }
 
+.icon::after {
+  display: block;
+  font-family: awesomeFonts;
+  font-size: 20px;
+  height: inherit;
+  text-align: center;
+}
+
 input.icon {
   width: auto;
 }
