@@ -11,9 +11,9 @@ export class AuthService {
     constructor(
         private localStorageService: LocalStorageService,
         private router: Router
-        ) {
-            this.token = localStorageService.getObject('token');
-         }
+    ) {
+        this.token = localStorageService.getObject('token');
+    }
 
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -28,11 +28,9 @@ export class AuthService {
             response => {
                 this.router.navigate(['/'])
                 firebase.auth().currentUser.getIdToken().then(
-                    (token: string) => { 
-                        if (remember) {
-                            this.localStorageService.setObject('token', token);
-                        }
-                        this.token = token; 
+                    (token: string) => {
+                        this.localStorageService.setObject('token', token);
+                        this.token = token;
                     }
                 )
             }
@@ -40,28 +38,24 @@ export class AuthService {
             .catch(
             error => console.log(error)
             )
-
-        // var ref = new Firebase('https://music-player-55870.firebaseio.com');
-        // ref.authWithPassword({
-        //     email: 'gleb@test.com',
-        //     password: '123456'
-        // }, function (error, authData) {
-        //     /* Your Code */
-        // }, {
-        //         remember: 'sessionOnly'
-        //     });
     }
 
     getToken() {
-        firebase.auth().currentUser.getIdToken()
-            .then(
-            (token: string) => this.token = token
-            );
+        if (firebase.auth().currentUser) {
+            firebase.auth().currentUser.getIdToken()
+                .then(
+                (token: string) => {
+                    this.token = token;
+                    this.localStorageService.setObject('token', token);
+                }
+                );
+        }
         return this.token;
     }
 
     logOut() {
         firebase.auth().signOut();
+        this.localStorageService.removeObject('token');
         this.token = null;
     }
 

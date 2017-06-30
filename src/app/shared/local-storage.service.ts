@@ -18,4 +18,9 @@ export class LocalStorageService {
     setObject(key, value) {
         localStorage[key] = JSON.stringify(value);
     }
+
+    removeObject(key: string) {
+        localStorage.removeItem(key);
+
+    }
 }
