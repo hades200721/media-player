@@ -16,7 +16,10 @@ export class PlaylistComponent implements OnInit {
   subscription: Subscription;
   playlist: Song[] = [];
   starts: number[] = [1, 2, 3, 4, 5];
-  starHover: number = -1; // unranked
+  starHoverArr: number[] = [];
+
+  itemsPerPage: number = 10; // max items per page for pagination
+  currentP: number = 1; // defualt page is 1 for pagination
 
   constructor(
     private playlistService: PlaylistService,
@@ -30,6 +33,7 @@ export class PlaylistComponent implements OnInit {
       .subscribe(
       (playlist: Song[]) => {
         this.playlist = playlist;
+        this.starHoverArr = new Array(playlist.length);
       }
       )
 

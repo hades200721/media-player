@@ -18,6 +18,6 @@ export class Song {
         this.duration = duration;
         this.durationStr = durationStr;
         this.imagePath = (imagePath) ? imagePath.replace('large', 't500x500') : '';
-        this.rating = -1;
+        this.rating = 0;
     }
 }
