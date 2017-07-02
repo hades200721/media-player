@@ -35,7 +35,8 @@ export class PlaylistComponent implements OnInit {
 
   }
 
-  setRating(event: Event, playlistItemIndex: number, rating: number) {
+  setRating(event: Event, playlistItem: Song, rating: number) {
+    const playlistItemIndex = this.playlistService.songExists(playlistItem.id);
     this.playlistService.setRating(playlistItemIndex, rating);
     this.dataStorageService.savePlaylist();
     event.stopPropagation();
