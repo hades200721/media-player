@@ -35,14 +35,16 @@ export class PlaylistComponent implements OnInit {
 
   }
 
-  setRating(playlistItemIndex: number, rating: number) {
+  setRating(event: Event, playlistItemIndex: number, rating: number) {
     this.playlistService.setRating(playlistItemIndex, rating);
     this.dataStorageService.savePlaylist();
+    event.stopPropagation();
   }
 
   removeFromPlaylist(index: number) {
     this.playlistService.removeSongFromPlaylist(index);
     this.dataStorageService.savePlaylist();
+    event.stopPropagation();
   }
 
   ngOnDestroy() {

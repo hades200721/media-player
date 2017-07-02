@@ -25,7 +25,7 @@ export class ResultItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  addRemoveToPlaylist(song: Song) {
+  addRemoveToPlaylist(event: Event, song: Song) {
     let songIndex = this.playlistService.songExists(song.id);
     if (songIndex === -1) {
       this.playlistService.addSongToPlaylist(song);
@@ -33,10 +33,11 @@ export class ResultItemComponent implements OnInit {
       this.playlistService.removeSongFromPlaylist(songIndex);
     }
     this.dataStorageService.savePlaylist();
+    event.stopPropagation();
   }
 
   playlistInclude(id: number) {
-    return false;
+    return (this.playlistService.songExists(id) !== -1);
   }
 
 

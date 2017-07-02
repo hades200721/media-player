@@ -1,0 +1,21 @@
+:host() {
+    position: relative;
+    height: 950px;
+}
+
+.container .jumbotron {
+    /*background-color: transparent;*/
+    color: #282828;
+}
+
+.home-bg {
+    background-attachment: fixed;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../../assets/images/sample_bg.jpg);
+    background-origin: padding-box;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    height: 100%;
+}
