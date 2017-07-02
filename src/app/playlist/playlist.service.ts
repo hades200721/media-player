@@ -31,6 +31,10 @@ export class PlaylistService {
         return index;
     }
 
+    setRating(songIndex: number, rating: number) {
+        this.playlist[songIndex].rating = rating;
+    }
+
     addSongToPlaylist(song: Song) {
         this.playlist.push(song);
         this.playlistChanged.next(this.playlist.slice());

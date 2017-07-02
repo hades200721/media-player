@@ -8,15 +8,15 @@
         <div class="flex flex-auto main-nav">
             <ul class="flex-auto navigator">
                 <li [routerLink]="['search']" routerLinkActive="active">
-                    <a class="icon search"></a>
+                    <a class="icon mr3 search"></a>
                     <a class="flex-auto">Search</a>
                 </li>
                 <li [routerLink]="['wiki']" routerLinkActive="active">
-                    <a class="icon wikipedia"></a>
+                    <a class="icon mr3 wikipedia"></a>
                     <a class="flex-auto">Wikipedia</a>
                 </li>
                 <li [routerLink]="['about']" routerLinkActive="active">
-                    <a class="icon about"></a>
+                    <a class="icon mr3 about"></a>
                     <a class="flex-auto">About</a>
                 </li>
             </ul>
@@ -24,26 +24,26 @@
             <ul class="navigator">
                 <template [ngIf]="!authService.isAuthenticated()">
                     <li [routerLink]="['sign-in']" routerLinkActive="active">
-                        <a class="icon log-in"></a>
+                        <a class="icon mr3 log-in"></a>
                         <a class="flex-auto">Login</a>
                     </li>
                     <li [routerLink]="['sign-up']" routerLinkActive="active">
-                        <a class="icon register"></a>
-                        <a>Register</a>
+                        <a class="icon mr3 register"></a>
+                        <a class="truncate">Register</a>
                     </li>
                 </template>
                 <template [ngIf]="authService.isAuthenticated()">
                     <li [routerLink]="['playlist']" routerLinkActive="active">
-                        <a class="icon play-list"></a>
-                        <a>Playlist</a>
+                        <a class="icon mr3 play-list"></a>
+                        <a class="truncate">Playlist</a>
                     </li>
                     <li [routerLink]="['search-history']" routerLinkActive="active">
-                        <a class="icon history"></a>
-                        <a>Search History</a>
+                        <a class="icon mr3 history"></a>
+                        <a class="truncate">Search History</a>
                     </li>
                     <li (click)="logOut()">
-                        <a class="icon log-out"></a>
-                        <a>Log out</a>
+                        <a class="icon mr3 log-out"></a>
+                        <a class="truncate">Log out</a>
                     </li>
                 </template>
             </ul>

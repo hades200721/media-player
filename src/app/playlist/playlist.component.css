@@ -49,6 +49,17 @@
   content: '\f006';
 }
 
+
+.star polygon {
+  fill: transparent;
+  stroke: #ddd;
+}
+
+.star.hover polygon {
+  fill: gold;
+  stroke: #282828;
+}
+
 .icon.remove {
   box-sizing: content-box;
   border-left: 1px solid #ddd;

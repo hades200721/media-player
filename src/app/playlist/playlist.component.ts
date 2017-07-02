@@ -16,6 +16,7 @@ export class PlaylistComponent implements OnInit {
   subscription: Subscription;
   playlist: Song[] = [];
   starts: number[] = [1, 2, 3, 4, 5];
+  starHover: number = -1; // unranked
 
   constructor(
     private playlistService: PlaylistService,
@@ -32,6 +33,11 @@ export class PlaylistComponent implements OnInit {
       }
       )
 
+  }
+
+  setRating(playlistItemIndex: number, rating: number) {
+    this.playlistService.setRating(playlistItemIndex, rating);
+    this.dataStorageService.savePlaylist();
   }
 
   removeFromPlaylist(index: number) {

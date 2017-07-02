@@ -9,9 +9,15 @@
         <p>{{playlistItem.artist}}</p>
       </div>
     </div>
-    <div class="flex state">
-      <a *ngFor="let star of starts" class="icon stars"></a>
+    <div class="flex state" (mouseleave)="starHover = -1">
+      {{playlistItem.rating}}
+      <svg *ngFor="let star of starts; let j = index" (mouseover)="starHover = j" (click)="setRating(i, j)" class="icon star" [class.hover]="j <= playlistItem.rating" 
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+        <polygon points="25 5  30 25  45 25  35 35  40 50  25 40  10 50  15 35  5 25  20 25" stroke-width="4"
+        />
+      </svg>
       <a class="mx3 pl2 icon remove" (click)="removeFromPlaylist(i);"></a>
+
     </div>
   </div>
 </div>
