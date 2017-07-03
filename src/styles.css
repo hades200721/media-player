@@ -54,7 +54,7 @@ hr {
   width: 30px;
 }
 
-.icon::after {
+.icon::after, .icon::before {
   display: block;
   font-family: awesomeFonts;
   font-size: 20px;

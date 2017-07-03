@@ -4,8 +4,14 @@
     <thead>
       <tr>
         <th></th>
-        <th class="c-pointer" (click)="sortBy('name')">Title</th>
-        <th class="c-pointer" (click)="sortBy('rating')">Rating</th>
+        <th class="c-pointer" (click)="sortBy('name')">
+          <a class="icon" [class.sort-alpha]="sortParameter === 'name'" [class.desc]="descending"></a>
+          <span>Title</span>
+        </th>
+        <th class="c-pointer" (click)="sortBy('rating')">
+          <a class="icon" [class.sort-numeric]="sortParameter === 'rating'" [class.desc]="descending"></a>
+          <span>Rating</span>
+        </th>
         <th></th>
       </tr>
     </thead>

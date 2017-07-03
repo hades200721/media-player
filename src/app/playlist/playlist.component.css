@@ -32,6 +32,26 @@
   transform: translate3d( -50%, -50%, 0);
 }
 
+.sort-alpha::before {
+  content: '\f15d';
+  display: inline;  
+}
+
+.sort-alpha.desc::before {
+  content: '\f15e';
+  display: inline;  
+}
+
+.sort-numeric::before {
+  content: '\f160';
+  display: inline;  
+}
+
+.sort-numeric.desc::before {
+  content: '\f161';
+  display: inline;  
+}
+
 .stars {
   width: 20px;
 }
