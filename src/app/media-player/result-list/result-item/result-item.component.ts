@@ -14,6 +14,7 @@ export class ResultItemComponent implements OnInit {
 
   @Input('data') songs: Song[];
   @Input('listview') list: boolean = true;
+  selectedSong: Song = null;
 
   constructor(
     private authService: AuthService,

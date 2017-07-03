@@ -17,3 +17,8 @@
   background-color: #e2e2e2;
   color: #292b2c;
 }
+
+.song-wrapper.selected {
+  background-color: #6f6f6f;
+  color: #bcbcbc;
+}

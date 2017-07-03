@@ -29,4 +29,7 @@ export class MediaPlayerService {
         this.selectedSongChanged.next(song);
     }
 
+    public getSelectedSong() {
+        return this.selectedSong;
+    }
 }

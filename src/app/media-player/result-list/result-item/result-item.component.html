@@ -11,7 +11,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="c-pointer song-wrapper" *ngFor="let song of songs; let i = index" (click)="mediaPlayerService.setSelectedSong(song)">
+      <tr class="c-pointer song-wrapper" [class.selected]="selectedSong === song"
+        *ngFor="let song of songs; let i = index" (click)="mediaPlayerService.setSelectedSong(song); selectedSong = song;">
         <td>{{i+1}}</td>
         <td>{{song.name}}</td>
         <td>{{song.artist}}</td>
