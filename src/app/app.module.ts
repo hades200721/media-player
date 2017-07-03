@@ -27,6 +27,7 @@ import { PlayerControlsComponent } from './player-controls/player-controls.compo
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { SortAlphabeticalPipe } from './pipes/sort-alphabetical.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SignupComponent } from './auth/signup/signup.component';
     PlaylistComponent,
     SearchHistoryComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    SortAlphabeticalPipe
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,9 @@ export class PlaylistComponent implements OnInit {
   itemsPerPage: number = 10; // max items per page for pagination
   currentP: number = 1; // defualt page is 1 for pagination
 
+  sortParameter: string = 'name';
+  descending: boolean = true;
+
   constructor(
     private playlistService: PlaylistService,
     private dataStorageService: DataStorageService,
@@ -36,7 +39,15 @@ export class PlaylistComponent implements OnInit {
         this.starHoverArr = new Array(playlist.length);
       }
       )
+  }
 
+  sortBy(parameter: string) {
+    if (this.sortParameter === parameter) {
+      this.descending = !this.descending;
+    } else {
+      this.descending = true;
+      this.sortParameter = parameter;
+    }
   }
 
   setRating(event: Event, playlistItem: Song, rating: number) {

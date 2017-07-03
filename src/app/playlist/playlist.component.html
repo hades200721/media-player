@@ -1,27 +1,40 @@
-<div class="mt3 container">
-  <div *ngFor="let i = index; let playlistItem of playlist | paginate: { itemsPerPage: itemsPerPage, currentPage: currentP }"
-    class="play-list-container c-pointer" (click)="mediaPlayerService.setSelectedSong(playlistItem);">
-    <div class="flex info">
-      <div class="relative img icon playing">
-        <img height="60" width="60" [src]="playlistItem.imagePath">
-      </div>
-      <div class="ml2 titles">
-        <h5>{{playlistItem.name}}</h5>
-        <p>{{playlistItem.artist}}</p>
-      </div>
-    </div>
-    <div class="flex state" (mouseleave)="starHoverArr[(currentP-1)*itemsPerPage+i] = 0">
-      {{(currentP-1)*itemsPerPage+i }}
-      {{starHoverArr[(currentP-1)*itemsPerPage+i]}}
-      <svg *ngFor="let star of starts; let j = index" (mouseover)="starHoverArr[(currentP-1)*itemsPerPage+i] = star" (click)="setRating($event, playlistItem, star)"
-        class="icon star" [class.hover]="star <= (starHoverArr[(currentP-1)*itemsPerPage+i] || playlistItem.rating)" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 50 50">
-        <polygon points="25 5  30 25  45 25  35 35  40 50  25 40  10 50  15 35  5 25  20 25" stroke-width="4" />
-      </svg>
-      <a class="mx3 pl2 icon remove" (click)="removeFromPlaylist(i);"></a>
-    </div>
-  </div>
+<div class="container">
 
-  <pagination-controls class="block mt3" (pageChange)="currentP = $event"></pagination-controls>
+  <table *ngIf="playlist" class="table table-inverse">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="c-pointer" (click)="sortBy('name')">Title</th>
+        <th class="c-pointer" (click)="sortBy('rating')">Rating</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i = index; let playlistItem of playlist | sortAlphabetical:sortParameter:descending | paginate: { itemsPerPage: itemsPerPage, currentPage: currentP }"
+        class="play-list-container c-pointer" (click)="mediaPlayerService.setSelectedSong(playlistItem);">
+
+        <td class="relative img icon playing">
+          <img height="60" width="60" [src]="playlistItem.imagePath">
+        </td>
+        <td class="titles">
+          <h5>{{playlistItem.name}}</h5>
+          <p>{{playlistItem.artist}}</p>
+        </td>
+        <td class="state" (mouseleave)="starHoverArr[(currentP-1)*itemsPerPage+i] = 0">
+          <!--{{(currentP-1)*itemsPerPage+i }} {{starHoverArr[(currentP-1)*itemsPerPage+i]}}-->
+          <svg *ngFor="let star of starts; let j = index" (mouseover)="starHoverArr[(currentP-1)*itemsPerPage+i] = star" (click)="setRating($event, playlistItem, star)"
+            class="icon star" [class.hover]="star <= (starHoverArr[(currentP-1)*itemsPerPage+i] || playlistItem.rating)" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 50 50">
+            <polygon points="25 5  30 25  45 25  35 35  40 50  25 40  10 50  15 35  5 25  20 25" stroke-width="4" />
+          </svg>
+        </td>
+        <td>
+          <a class="mx3 pl2 icon remove" (click)="removeFromPlaylist(i);"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls class="block mt2" (pageChange)="currentP = $event"></pagination-controls>
 
 </div>
