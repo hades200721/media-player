@@ -28,6 +28,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SortAlphabeticalPipe } from './pipes/sort-alphabetical.pipe';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SortAlphabeticalPipe } from './pipes/sort-alphabetical.pipe';
     SearchHistoryComponent,
     SigninComponent,
     SignupComponent,
-    SortAlphabeticalPipe
+    SortAlphabeticalPipe,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ body {
   src: url('./assets/fontawesome.woff2');
 }
 
-input {
+input, textarea {
   background-color: #292b2c;
 }
 
@@ -23,6 +23,10 @@ input.form-control:focus {
 .disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.column-nowrap {
+  flex-flow: column nowrap;
 }
 
 .disabled:active {

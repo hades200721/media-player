@@ -1,0 +1,16 @@
+<div class="relative container">
+  <form class="contact" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <h3>Quick Contact</h3>
+    <h4>Leave us your feedback!</h4>
+    <label class="flex column-nowrap">Name:
+    <input formControlName="name" placeholder="Your name" type="text" tabindex="1">
+    </label>
+    <label class="flex column-nowrap">E-Mail:
+    <input formControlName="email" placeholder="Your Email Address" type="email" tabindex="2">
+    </label>
+    <label class="flex column-nowrap">Message:
+    <textarea formControlName="message" placeholder="Type your Message Here...." tabindex="3"></textarea>
+    </label>
+    <button name="submit" type="submit" [class.disabled]="!contactForm.valid">Submit</button>
+  </form>
+</div>

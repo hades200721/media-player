@@ -81,6 +81,10 @@
   content: '\f002';
 }
 
+.contact::after {
+  content: '\f007';
+}
+ 
 .about::after {
   content: '\f05a';
 }
