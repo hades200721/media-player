@@ -21,6 +21,8 @@ export class PlaylistComponent implements OnInit {
   itemsPerPage: number = 10; // max items per page for pagination
   currentP: number = 1; // defualt page is 1 for pagination
 
+  selectedItem: Song;
+
   sortParameter: string = 'name';
   descending: boolean = true;
 
@@ -61,6 +63,11 @@ export class PlaylistComponent implements OnInit {
     this.playlistService.removeSongFromPlaylist(index);
     this.dataStorageService.savePlaylist();
     event.stopPropagation();
+  }
+
+  onItemClick(item) {
+    this.selectedItem = item;
+    this.mediaPlayerService.setSelectedSong(item);
   }
 
   ngOnDestroy() {

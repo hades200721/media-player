@@ -1,6 +1,6 @@
 <div class="left-layer top-0 bottom-0 flex border flex p2 m2">
   <div class="header flex">
-    <input #keyword type="text" class="flex-auto"/>
+    <input #keyword type="text" class="flex-auto" />
     <button class="btn btn-primary ml2" (click)="addToSearchHistory()">Search</button>
   </div>
 
@@ -10,11 +10,11 @@
 
   <div class="footer clearfix">
     <a class="left icon left-arrow" [class.disabled]="!hasNext" (click)="onNextList()"></a>
-    <a [tooltip]="myTooltip" class="ml1 right icon tiles" (mouseenter)="tooltipView = 'thumbnail'" (click)="listView = false;"></a>
-    <a [tooltip]="myTooltip" class="right icon playlist" (mouseenter)="tooltipView = 'file list'" (click)="listView = true;"></a>
+    <a [tooltip]="myTooltip" [tooltipPlacement]="'left'" class="ml1 right icon tiles" (mouseenter)="tooltipView = 'thumbnail'" (click)="listView = false;"></a>
+    <a [tooltip]="myTooltip" [tooltipPlacement]="'left'" class="right icon playlist" (mouseenter)="tooltipView = 'file list'" (click)="listView = true;"></a>
   </div>
 </div>
 
-<tooltip-content #myTooltip [animation]="true" placement="left">
-    <b>Change to <span style="color: #ffc520">{{tooltipView}}</span> view</b>.
+<tooltip-content #myTooltip>
+  <b>Change to <font color="#ffc520">{{tooltipView}}</font> view</b>.
 </tooltip-content>

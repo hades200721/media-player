@@ -5,11 +5,11 @@
       <tr>
         <th></th>
         <th class="c-pointer" (click)="sortBy('name')">
-          <a class="icon" [class.sort-alpha]="sortParameter === 'name'" [class.desc]="descending"></a>
+          <a class="icon mr2" [class.sort-alpha]="sortParameter === 'name'" [class.desc]="descending"></a>
           <span>Title</span>
         </th>
         <th class="c-pointer" (click)="sortBy('rating')">
-          <a class="icon" [class.sort-numeric]="sortParameter === 'rating'" [class.desc]="descending"></a>
+          <a class="icon mr2" [class.sort-numeric]="sortParameter === 'rating'" [class.desc]="descending"></a>
           <span>Rating</span>
         </th>
         <th></th>
@@ -17,7 +17,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let i = index; let playlistItem of playlist | sortAlphabetical:sortParameter:descending | paginate: { itemsPerPage: itemsPerPage, currentPage: currentP }"
-        class="play-list-container c-pointer" (click)="mediaPlayerService.setSelectedSong(playlistItem);">
+        class="play-list-container c-pointer" [class.selected]="selectedItem === playlistItem" (click)="onItemClick(playlistItem)">
 
         <td class="relative img icon playing">
           <img height="60" width="60" [src]="playlistItem.imagePath">
@@ -27,7 +27,6 @@
           <p>{{playlistItem.artist}}</p>
         </td>
         <td class="state" (mouseleave)="starHoverArr[(currentP-1)*itemsPerPage+i] = 0">
-          <!--{{(currentP-1)*itemsPerPage+i }} {{starHoverArr[(currentP-1)*itemsPerPage+i]}}-->
           <svg *ngFor="let star of starts; let j = index" (mouseover)="starHoverArr[(currentP-1)*itemsPerPage+i] = star" (click)="setRating($event, playlistItem, star)"
             class="icon star" [class.hover]="star <= (starHoverArr[(currentP-1)*itemsPerPage+i] || playlistItem.rating)" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 50 50">

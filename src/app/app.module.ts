@@ -14,6 +14,10 @@ import { AuthService } from './auth/auth.service';
 import { MediaPlayerModule } from './media-player/media-player.module';
 import { MediaPlayerService } from './media-player/media-player.service';
 import { SoundCloudService } from './shared/sound-cloud.service';
+import { SoundManager } from './player-controls/sound-manager.service';
+import { SoundManagerSoundPlayer } from './player-controls/sound-cloud-player-manager.service';
+import { PlayerControlsModule } from './player-controls/player-controls.module';
+
 import { HomePageComponent } from './home-page/home-page.component';
 import { WikipediaSearchComponent } from './wikipedia-search/wikipedia-search.component';
 import { NavigatorComponent } from './navigator/navigator.component';
@@ -29,6 +33,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SortAlphabeticalPipe } from './pipes/sort-alphabetical.pipe';
 import { ContactComponent } from './contact/contact.component';
+import { TooltipModule } from "ngx-tooltip";
 
 @NgModule({
   declarations: [
@@ -53,7 +58,9 @@ import { ContactComponent } from './contact/contact.component';
     AppRoutingModule,
     JsonpModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    PlayerControlsModule,
+    TooltipModule
   ],
   providers: [
     WikipediaService,
@@ -63,6 +70,8 @@ import { ContactComponent } from './contact/contact.component';
     DataStorageService,
     SearchHistoryService,
     PlaylistService,
+    SoundManagerSoundPlayer,
+    SoundManager,
     AuthService
   ],
   bootstrap: [AppComponent]

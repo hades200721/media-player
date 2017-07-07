@@ -23,7 +23,9 @@
         "../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/soundmanager2/script/soundmanager2.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

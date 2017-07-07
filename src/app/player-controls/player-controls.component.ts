@@ -4,11 +4,10 @@ import {
   transition, animate, keyframes
 } from '@angular/core';
 import { MediaPlayerService } from '../media-player/media-player.service';
+import { SoundManager } from './sound-manager.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Song } from '../media-player/result-list/result-item/result-item.model';
 import { formatTime } from '../shared/helpers';
-
-
 
 @Component({
   selector: 'app-player-controls',
@@ -36,11 +35,15 @@ export class PlayerControlsComponent implements OnInit, OnDestroy {
   expanded: boolean = false;
   showDuration: boolean = true;
   currentRepeatOption: number = 0;
-  passedTime: number = 5000; // in milliseconds
+  passedTime: number = 0; // in milliseconds
+  tooltipText: string = '';
   muted: boolean = false;
   state: string = 'inactive';
 
-  constructor(private mediaPlayerService: MediaPlayerService) { }
+  constructor(
+    private soundManager: SoundManager,
+    private mediaPlayerService: MediaPlayerService
+    ) { }
 
   ngOnInit() {
     this.subscription = this.mediaPlayerService.selectedSongChanged

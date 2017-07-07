@@ -5,16 +5,22 @@
 .table>tbody>tr>td {
   padding: 5px;
   text-align: center;
+  vertical-align: middle;
 }
 
 .table>thead>tr>th {
   text-align: center;
 }
 
+.play-list-container.selected {
+  background-color: #6f6f6f;
+  color: #bcbcbc;
+}
+
 .play-list-container:hover {
   background-color: #e2e2e2;
   color: #292b2c;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  /*border-bottom: 1px solid rgba(0, 0, 0, 0.2);*/
 }
 
 .play-list-container:hover .img::after {
