@@ -12,6 +12,9 @@ export class SoundManager {
     private currentSong: Song;
     private playing = false;
     private isMute = false;
+    private shuffle = false;
+    private loop = false;
+
     constructor(
         private soundManagerSoundPlayer: SoundManagerSoundPlayer,
         private playlistService: PlaylistService
@@ -19,6 +22,22 @@ export class SoundManager {
 
     isPlaying() {
         return this.playing;
+    }
+
+    isShuffle() {
+        return this.shuffle;
+    }
+
+    setShuffle() {
+        this.shuffle = !this.shuffle;
+    }
+
+    isLoop() {
+        return this.loop;
+    }
+
+    setLoop() {
+        this.loop = !this.loop;
     }
 
     private getSoundPlayer(song: Song) {
@@ -57,15 +76,17 @@ export class SoundManager {
     }
 
     next() {
-        // var song = this.playlistService.next();
-        // if (song) this.play(song);
+        let song = this.playlistService.findNextSong(this.currentSong.id, this.loop, this.shuffle);
+        if (song) {
+            this.play(song);
+        }
     }
 
     previous() {
-        // var song = this.playlistService.previous();
-        // if (song) {
-        //     this.play(song);
-        // }
+        let song = this.playlistService.findPreviousSong(this.currentSong.id, this.shuffle);
+        if (song) {
+            this.play(song);
+        }
     }
 
     seek(time: number) {

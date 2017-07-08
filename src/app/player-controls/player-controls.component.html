@@ -1,13 +1,23 @@
 <div [@controls]='state' *ngIf="song" class="playControls">
   <div class="flex p0 playControls-wrapper">
     <div class="relative flex elements">
-      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'" class="border-none ml2 play-control-icon previous" (mouseenter)="tooltipText = 'Pevious song'"></button>
-      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'"  class="border-none ml2 play-control-icon {{soundManager.isPlaying() ? 'pause' : 'play'}}"
-        (mouseenter)="tooltipText = soundManager.isPlaying() ? 'pause' : 'play'" (click)="soundManager.togglePlayPause(song)"></button>
-      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'"  class="border-none ml2 play-control-icon next" (mouseenter)="tooltipText = 'Next song'"></button>
-      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'"  class="border-none ml2 play-control-icon shuffle" (mouseenter)="tooltipText = 'Shuffle playlist'"></button>
-      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'"  class="border-none ml2 play-control-icon {{repeatOption[currentRepeatOption]}}" (mouseenter)="tooltipText = 'Loop ' + repeatOption[currentRepeatOption]"
-        (click)="currentRepeatOption = (currentRepeatOption + 1) % 3">
+      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'" 
+      class="border-none ml2 play-control-icon previous" 
+      (mouseenter)="tooltipText = 'Pevious song'" (click)="soundManager.previous()"></button>
+      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'"  
+        class="border-none ml2 play-control-icon {{soundManager.isPlaying() ? 'pause' : 'play'}}"
+        (mouseenter)="tooltipText = soundManager.isPlaying() ? 'pause' : 'play'" (click)="soundManager.togglePlayPause(song)">
+      </button>
+      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'"  
+        class="border-none ml2 play-control-icon next" 
+        (mouseenter)="tooltipText = 'Next song'" (click)="soundManager.next()"></button>
+      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'"  
+        class="border-none ml2 play-control-icon shuffle" 
+        (mouseenter)="tooltipText = 'Shuffle playlist'" (click)="soundManager.setShuffle()"></button>
+      <button [tooltip]="tooltipControler" [tooltipPlacement]="'top'"  
+        class="border-none ml2 play-control-icon {{repeatOption[currentRepeatOption]}}" 
+        (mouseenter)="tooltipText = 'Loop ' + repeatOption[currentRepeatOption]" 
+        (click)="currentRepeatOption = (currentRepeatOption + 1) % 3; soundManager.setLoop()">
       </button>
 
       <!--TIMELINE-->
