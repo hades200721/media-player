@@ -4,6 +4,8 @@ import { Song } from '../media-player/result-list/result-item/result-item.model'
 import { Events } from '../shared/event.model';
 import { ISoundPlayer } from './sound-player.interface';
 import { PlaylistService } from '../playlist/playlist.service';
+import { MediaPlayerService } from '../media-player/media-player.service';
+
 @Injectable()
 export class SoundManager {
 
@@ -17,8 +19,16 @@ export class SoundManager {
 
     constructor(
         private soundManagerSoundPlayer: SoundManagerSoundPlayer,
-        private playlistService: PlaylistService
-    ) { }
+        private playlistService: PlaylistService,
+        private mediaPlayerService: MediaPlayerService
+    ) {
+        this.mediaPlayerService.selectedSongChanged
+            .subscribe(
+            (song: Song) => {
+                this.play(song);
+            }
+            )
+    }
 
     isPlaying() {
         return this.playing;
@@ -78,14 +88,14 @@ export class SoundManager {
     next() {
         let song = this.playlistService.findNextSong(this.currentSong.id, this.loop, this.shuffle);
         if (song) {
-            this.play(song);
+            this.mediaPlayerService.setSelectedSong(song);
         }
     }
 
     previous() {
         let song = this.playlistService.findPreviousSong(this.currentSong.id, this.shuffle);
         if (song) {
-            this.play(song);
+            this.mediaPlayerService.setSelectedSong(song);
         }
     }
 

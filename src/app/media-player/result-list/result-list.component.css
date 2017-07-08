@@ -11,6 +11,10 @@
   max-height: 80vh;
 }
 
+.search-input {
+  text-indent: 10px;
+}
+
 .header button {
   width: 150px;
 }

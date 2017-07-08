@@ -13,7 +13,9 @@ import { Song } from '../media-player/result-list/result-item/result-item.model'
 })
 export class PlaylistComponent implements OnInit {
 
-  subscription: Subscription;
+  playlistSubscription: Subscription;
+  songChangedSubscription: Subscription;
+
   playlist: Song[] = [];
   starts: number[] = [1, 2, 3, 4, 5];
   starHoverArr: number[] = [];
@@ -34,11 +36,19 @@ export class PlaylistComponent implements OnInit {
 
   ngOnInit() {
     this.dataStorageService.getPlaylistSongs();
-    this.subscription = this.playlistService.playlistChanged
+    this.playlistSubscription = this.playlistService.playlistChanged
       .subscribe(
       (playlist: Song[]) => {
         this.playlist = playlist;
         this.starHoverArr = new Array(playlist.length);
+      }
+      )
+
+    this.songChangedSubscription = this.mediaPlayerService.selectedSongChanged
+      .subscribe
+      (
+      (song: Song) => {
+        this.selectedItem = song;
       }
       )
   }
@@ -66,12 +76,12 @@ export class PlaylistComponent implements OnInit {
   }
 
   onItemClick(item) {
-    this.selectedItem = item;
     this.mediaPlayerService.setSelectedSong(item);
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.playlistSubscription.unsubscribe();
+    this.songChangedSubscription.unsubscribe();
   }
 
 }

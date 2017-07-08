@@ -20,7 +20,6 @@
 .play-list-container:hover {
   background-color: #e2e2e2;
   color: #292b2c;
-  /*border-bottom: 1px solid rgba(0, 0, 0, 0.2);*/
 }
 
 .play-list-container:hover .img::after {

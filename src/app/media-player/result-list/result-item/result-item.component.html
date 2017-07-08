@@ -12,14 +12,14 @@
     </thead>
     <tbody>
       <tr class="c-pointer song-wrapper" [class.selected]="selectedSong === song"
-        *ngFor="let song of songs; let i = index" (click)="mediaPlayerService.setSelectedSong(song); selectedSong = song;">
+        *ngFor="let song of songs; let i = index" (click)="onSongClick(song)">
         <td>{{i+1}}</td>
         <td>{{song.name}}</td>
         <td>{{song.artist}}</td>
         <td>{{song.genre}}</td>
         <td>{{song.durationStr}}</td>
         <td *ngIf="authService.isAuthenticated()" class="text-center">
-          <input type="checkbox" [checked]="playlistInclude(song.id)" (change)="addRemoveToPlaylist($event, song)"/>
+          <input type="checkbox" [checked]="playlistInclude(song.id)" (click)="addRemoveToPlaylist($event, song)"/>
           </td>
       </tr>
     </tbody>
