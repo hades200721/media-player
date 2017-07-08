@@ -62,8 +62,7 @@
   height: 2px;
   background-color: #f50;
   transition: transform 50ms;
-  transform: translateX(-560px);
-  width: 100%;
+  width: 0%;
 }
 
 .progressHandle {
@@ -72,6 +71,7 @@
   height: 8px;
   opacity: 0;
   transition: opacity 150ms;
+  transform: translateX(-50%);
   width: 8px;
 }
 
@@ -126,13 +126,13 @@
   border-color: #ccc;
   box-shadow: 0 2px 4px rgba(0,0,0,.1);
   overflow: initial;
-  height: 118px;
+  height: 125px;
 }
 
 .sliderBackground { 
   background-color: #ccc;
   bottom: 13px;
-  height: 92px;
+  height: 100px;
   width: 2px;
 }
 

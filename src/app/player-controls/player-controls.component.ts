@@ -7,6 +7,7 @@ import { MediaPlayerService } from '../media-player/media-player.service';
 import { SoundManager } from './sound-manager.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Events } from '../shared/event.model';
 import { formatTime } from '../shared/helpers';
 
 @Component({
@@ -37,13 +38,12 @@ export class PlayerControlsComponent implements OnInit, OnDestroy {
   currentRepeatOption: number = 0;
   passedTime: number = 0; // in milliseconds
   tooltipText: string = '';
-  muted: boolean = false;
   state: string = 'inactive';
 
   constructor(
     private soundManager: SoundManager,
     private mediaPlayerService: MediaPlayerService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.subscription = this.mediaPlayerService.selectedSongChanged
@@ -53,10 +53,18 @@ export class PlayerControlsComponent implements OnInit, OnDestroy {
         this.state = 'active';
       }
       )
+
+    this.soundManager.on(Events.Time, (time: number) => {
+      this.passedTime = time;
+    })
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  progressHandlerPosition() {
+    return (this.passedTime / this.song.duration) * 100;
   }
 
   timeLeft() {

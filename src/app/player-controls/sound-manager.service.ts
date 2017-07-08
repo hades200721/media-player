@@ -13,7 +13,7 @@ export class SoundManager {
     private subscribers: Object = {};
     private currentSong: Song;
     private playing = false;
-    private isMute = false;
+    private mute = false;
     private shuffle = false;
     private loop = false;
 
@@ -21,13 +21,16 @@ export class SoundManager {
         private soundManagerSoundPlayer: SoundManagerSoundPlayer,
         private playlistService: PlaylistService,
         private mediaPlayerService: MediaPlayerService
-    ) {
+    ){
         this.mediaPlayerService.selectedSongChanged
             .subscribe(
             (song: Song) => {
                 this.play(song);
-            }
-            )
+            })
+    }
+
+    isMuted() {
+        return this.mute;
     }
 
     isPlaying() {
@@ -48,6 +51,10 @@ export class SoundManager {
 
     setLoop() {
         this.loop = !this.loop;
+    }
+
+    getVolume(): number {
+        return this.soundPlayer.getVolume();
     }
 
     private getSoundPlayer(song: Song) {
@@ -73,16 +80,11 @@ export class SoundManager {
     }
 
     togglePlayPause(song: Song) {
-        // if (this.currentSong !== null) {
         if (!this.playing) {
             this.play(song);
         } else {
             this.soundPlayer.pause();
         }
-        // } else {
-        // let song = this.playlistService.first();
-        // this.play(this.currentSong);
-        // }
     }
 
     next() {
@@ -107,13 +109,13 @@ export class SoundManager {
 
     toggleMute() {
         if (this.currentSong) {
-            if (this.isMute) {
+            if (this.mute) {
                 this.soundPlayer.setVolume(100);
-                this.isMute = false;
+                this.mute = false;
                 this.publish(Events.Volume, false);
             } else {
                 this.soundPlayer.setVolume(0);
-                this.isMute = true;
+                this.mute = true;
                 this.publish(Events.Volume, true);
             }
         }
