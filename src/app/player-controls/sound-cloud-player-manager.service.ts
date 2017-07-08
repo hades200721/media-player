@@ -15,8 +15,8 @@ export class SoundManagerSoundPlayer implements ISoundPlayer {
 
     initialize(song: Song, callback: (e: Error, data: any) => void) {
         if (this.lastSong) {
-            // window['soundManager'].unload(this.lastSong.idFromProvider);
-            // window['soundManager'].destroySound(this.lastSong.idFromProvider);
+            window['soundManager'].unload(this.lastSong.id);
+            window['soundManager'].destroySound(this.lastSong.id);
         }
         var soundObject = window['soundManager'].getSoundById(song.id);
         if (!soundObject) {
@@ -32,16 +32,11 @@ export class SoundManagerSoundPlayer implements ISoundPlayer {
                 onplay: () => this.publish(Events.Play, null),
                 onresume: () => this.publish(Events.PlayResume, null),
                 onstop: () => this.publish(Events.Finish, null),
-                whileplaying: () => {
-                    var time = this.currentTime();
-                    this.publish(Events.Time, time)
-                },
+                whileplaying: () => this.publish(Events.Time, this.currentTime()),
             });
-
             if (!soundObject) {
-                return callback(new Error('Error while create sound'), null);
+                return callback(new Error('Error while creating sound object'), null);
             }
-
             this.lastSong = song;
         }
 
