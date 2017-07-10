@@ -75,5 +75,16 @@ export class PlayerControlsComponent implements OnInit, OnDestroy {
     return formatTime(this.passedTime);
   }
 
+  updateTime(event: MouseEvent) {
+
+  }
+
+  updateVolume(event: MouseEvent) {
+    const targetElm = (<HTMLElement>event.target);
+    const deltaY = event['deltaY'];
+    let newVolume = this.soundManager.getVolume() - deltaY;
+    this.soundManager.setVolume(Math.min(Math.max(newVolume,0),100));
+  }
+
 
 }

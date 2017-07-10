@@ -18,6 +18,9 @@ import { SoundManager } from './player-controls/sound-manager.service';
 import { SoundManagerSoundPlayer } from './player-controls/sound-cloud-player-manager.service';
 import { PlayerControlsModule } from './player-controls/player-controls.module';
 
+
+import { Draggable } from './directives/dragger.directive';
+
 import { HomePageComponent } from './home-page/home-page.component';
 import { WikipediaSearchComponent } from './wikipedia-search/wikipedia-search.component';
 import { NavigatorComponent } from './navigator/navigator.component';
@@ -48,7 +51,8 @@ import { TooltipModule } from "ngx-tooltip";
     SigninComponent,
     SignupComponent,
     SortAlphabeticalPipe,
-    ContactComponent
+    ContactComponent,
+    Draggable
   ],
   imports: [
     BrowserModule,

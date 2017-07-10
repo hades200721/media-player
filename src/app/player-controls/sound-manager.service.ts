@@ -13,7 +13,6 @@ export class SoundManager {
     private subscribers: Object = {};
     private currentSong: Song;
     private playing = false;
-    private mute = false;
     private shuffle = false;
     private loop = false;
 
@@ -30,7 +29,7 @@ export class SoundManager {
     }
 
     isMuted() {
-        return this.mute;
+        return this.getVolume() === 0;
     }
 
     isPlaying() {
@@ -55,6 +54,10 @@ export class SoundManager {
 
     getVolume(): number {
         return this.soundPlayer.getVolume();
+    }
+
+    setVolume(vol: number) {
+        this.soundPlayer.setVolume(vol);
     }
 
     private getSoundPlayer(song: Song) {
@@ -109,13 +112,11 @@ export class SoundManager {
 
     toggleMute() {
         if (this.currentSong) {
-            if (this.mute) {
+            if (this.isMuted()) {
                 this.soundPlayer.setVolume(100);
-                this.mute = false;
                 this.publish(Events.Volume, false);
             } else {
                 this.soundPlayer.setVolume(0);
-                this.mute = true;
                 this.publish(Events.Volume, true);
             }
         }
@@ -134,7 +135,9 @@ export class SoundManager {
     }
 
     private publish(event, data: any) {
-        console.log('Publish event:', event, data);
+
+        // console.log('Publish event:', event, data);
+        
         if (this.subscribers[event]) {
             this.subscribers[event].forEach(function (handler) {
                 handler(data);

@@ -21,11 +21,12 @@
           <span>{{timePassed()}}</span>
         </div>
 
-        <div class="relative flex py2 mx2 progressWrapper" role="progressbar" data-valuemax="201370" data-valuenow="9251.682">
+        <div class="relative flex py2 mx2 progressWrapper">
           <div class="relative overflow-hidden progress-background" style="width: 560px">
             <div class="absolute progressBar" [style.width.%]="progressHandlerPosition()"></div>
           </div>
-          <div class="absolute c-pointer progressHandle" [style.left.%]="progressHandlerPosition()"></div>
+          <div [draggable] (onDrag)="updateTime($event)" class="absolute content-box c-pointer progressHandle" 
+            [style.left.%]="progressHandlerPosition()"></div>
         </div>
 
         <div class="left-align c-pointer duration" (click)="showDuration = !showDuration">
@@ -37,13 +38,13 @@
 
       <!--VOLUME-->
       <div class="relative flex volume-balancer mr2" [class.muted]="soundManager.isMuted()" [class.expanded]="expanded" (mouseenter)="expanded = true"
-        (mouseleave)="expanded = false" (click)="soundManager.toggleMute()" data-level="2">
-        <button class="border-none ml2 play-control-icon volume"></button>
-        <div class="absolute overflow-hidden sliderWrapper center-x" role="slider" aria-valuemin="0" aria-valuemax="1" aria-label="Volume"
-          aria-valuenow="0.2">
+        (mouseleave)="expanded = false">
+        <button class="border-none ml2 play-control-icon volume" (click)="soundManager.toggleMute()"></button>
+        <div class="absolute overflow-hidden sliderWrapper center-x">
           <div class="absolute center-x sliderBackground"></div>
           <div class="absolute center-x sliderProgress" [style.height.px]="soundManager.getVolume()"></div>
-          <div class="absolute center-x c-pointer progressHandle sliderHandle" [style.top.px]="104-soundManager.getVolume()"></div>
+          <div [draggable] (onDrag)="updateVolume($event)" class="absolute center-x c-pointer content-box progressHandle sliderHandle"
+            [style.top.px]="104 - soundManager.getVolume()"></div>
         </div>
       </div>
 

@@ -66,8 +66,10 @@
 }
 
 .progressHandle {
-  background-color: #f50;
+  background-clip: padding-box;
+  background-color: #f50;  
   border-radius: 50%;
+  border: 5px solid transparent;
   height: 8px;
   opacity: 0;
   transition: opacity 150ms;
@@ -84,7 +86,7 @@
 }
 
 .sliderWrapper {
-  bottom: 40px;
+  bottom: 30px;
   width: 30px;
   height: 0;
   transition: height 100ms;
@@ -123,10 +125,12 @@
 }
 
 .volume-balancer.expanded .sliderWrapper {
+  background-clip: padding-box;
   border-color: #ccc;
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  border: 10px solid transparent;
+  box-sizing: content-box;  
   overflow: initial;
-  height: 125px;
+  height: 125px;    
 }
 
 .sliderBackground { 

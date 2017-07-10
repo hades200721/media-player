@@ -49,6 +49,10 @@ a:focus, a:hover {
   text-decoration: none;
 }
 
+.content-box {
+  box-sizing: content-box;
+}
+
 hr {
   margin: 0 5px;
 }

@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// import { PlayerControlsComponent } from './player-controls.component';
 import { TooltipModule } from "ngx-tooltip";
 
 @NgModule({
-    declarations: [
-        // PlayerControlsComponent
-    ],
     imports: [
         CommonModule,
         TooltipModule
@@ -15,5 +11,4 @@ import { TooltipModule } from "ngx-tooltip";
 })
 
 export class PlayerControlsModule {
-
 }
