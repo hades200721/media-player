@@ -11,7 +11,7 @@ export class Song {
 
     constructor(id?: number, name?: string, artist?: string, genre?: string, desc?: string, duration?: number, durationStr?: string, imagePath?: string) {
         this.id = id || 0;
-        const nameArr = (this.name) ? this.name.split('-') : [];
+        const nameArr = (name) ? name.split('-') : [];
         this.name = (nameArr[1]) ? nameArr[1] : name || '';
         this.artist = (nameArr[0]) ? nameArr[0] : (artist || '');
         this.genre = genre || '';

@@ -17,7 +17,7 @@ import { formatTime } from '../shared/helpers';
   animations: [
     trigger('controls', [
       transition('void => active', [
-        animate(500, keyframes([
+        animate(750, keyframes([
           style({ transform: 'translateY(50px)', offset: 0 }),
           style({ transform: 'translate(0px)', offset: 1 }),
         ]))
@@ -30,15 +30,17 @@ import { formatTime } from '../shared/helpers';
 })
 export class PlayerControlsComponent implements OnInit, OnDestroy {
 
-  repeatOption: Array<string> = ['repeat', 'repeat-one', 'repeat-all'];
-  song: Song = null;
   subscription: Subscription;
+  state: string = 'inactive';
+
+  repeatOption: Array<string> = ['repeat', 'repeat-one', 'repeat-all'];
+  currentRepeatOption: number = 0;
   expanded: boolean = false;
   showDuration: boolean = true;
-  currentRepeatOption: number = 0;
+
+  song: Song = null;
   passedTime: number = 0; // in milliseconds
   tooltipText: string = '';
-  state: string = 'inactive';
 
   constructor(
     private soundManager: SoundManager,
@@ -56,6 +58,7 @@ export class PlayerControlsComponent implements OnInit, OnDestroy {
 
     this.soundManager.on(Events.Time, (time: number) => {
       this.passedTime = time;
+      console.log(time);
     })
   }
 
@@ -76,14 +79,16 @@ export class PlayerControlsComponent implements OnInit, OnDestroy {
   }
 
   updateTime(event: MouseEvent) {
-
+    const range = (<HTMLElement>event.target).parentElement.offsetWidth;
+    const deltaX = event['deltaX'];
+    let newTime = (this.passedTime / this.song.duration) + (deltaX / range);    
+    this.soundManager.seek(Math.min(Math.max(newTime * 100, 0), this.song.duration));
   }
 
   updateVolume(event: MouseEvent) {
-    const targetElm = (<HTMLElement>event.target);
     const deltaY = event['deltaY'];
     let newVolume = this.soundManager.getVolume() - deltaY;
-    this.soundManager.setVolume(Math.min(Math.max(newVolume,0),100));
+    this.soundManager.setVolume(Math.min(Math.max(newVolume, 0), 100));
   }
 
 
