@@ -10,11 +10,15 @@
 
   <div class="footer clearfix">
     <a class="left icon left-arrow" [class.disabled]="!hasNext" (click)="onNextList()"></a>
-    <a [tooltip]="myTooltip" [tooltipPlacement]="'left'" class="ml1 right icon tiles" (mouseenter)="tooltipView = 'thumbnail'" (click)="listView = false;"></a>
-    <a [tooltip]="myTooltip" [tooltipPlacement]="'left'" class="right icon playlist" (mouseenter)="tooltipView = 'file list'" (click)="listView = true;"></a>
+    <a [tooltip]="viewThumbnails" [tooltipPlacement]="'left'" class="ml1 right icon tiles" (click)="listView = false;"></a>
+    <a [tooltip]="viewDetails" [tooltipPlacement]="'left'" class="right icon playlist" (click)="listView = true;"></a>
   </div>
 </div>
 
-<tooltip-content #myTooltip>
-  <b>Change to <font color="#ffc520">{{tooltipView}}</font> view</b>.
+<tooltip-content #viewDetails>
+  <b>Change to <font color="#ffc520">Details (table)</font> view</b>.
+</tooltip-content>
+
+<tooltip-content #viewThumbnails>
+  <b>Change to <font color="#ffc520">Thumbnails</font> view</b>.
 </tooltip-content>

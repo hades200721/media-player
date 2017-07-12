@@ -14,12 +14,7 @@ import { AuthService } from './auth/auth.service';
 import { MediaPlayerModule } from './media-player/media-player.module';
 import { MediaPlayerService } from './media-player/media-player.service';
 import { SoundCloudService } from './shared/sound-cloud.service';
-import { SoundManager } from './player-controls/sound-manager.service';
-import { SoundManagerSoundPlayer } from './player-controls/sound-cloud-player-manager.service';
 import { PlayerControlsModule } from './player-controls/player-controls.module';
-
-
-import { Draggable } from './directives/dragger.directive';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { WikipediaSearchComponent } from './wikipedia-search/wikipedia-search.component';
@@ -30,13 +25,11 @@ import { DataStorageService } from './shared/data-storage.service';
 import { PlaylistService } from './playlist/playlist.service';
 import { SearchHistoryComponent } from './search-history/search-history.component';
 import { SearchHistoryService } from './search-history/search-history.service';
-import { PlayerControlsComponent } from './player-controls/player-controls.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SortAlphabeticalPipe } from './pipes/sort-alphabetical.pipe';
 import { ContactComponent } from './contact/contact.component';
-import { TooltipModule } from "ngx-tooltip";
 
 @NgModule({
   declarations: [
@@ -45,14 +38,12 @@ import { TooltipModule } from "ngx-tooltip";
     WikipediaSearchComponent,
     NavigatorComponent,
     AboutComponent,
-    PlayerControlsComponent,
     PlaylistComponent,
     SearchHistoryComponent,
     SigninComponent,
     SignupComponent,
     SortAlphabeticalPipe,
-    ContactComponent,
-    Draggable
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +54,7 @@ import { TooltipModule } from "ngx-tooltip";
     JsonpModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    PlayerControlsModule,
-    TooltipModule
+    PlayerControlsModule    
   ],
   providers: [
     WikipediaService,
@@ -74,8 +64,6 @@ import { TooltipModule } from "ngx-tooltip";
     DataStorageService,
     SearchHistoryService,
     PlaylistService,
-    SoundManagerSoundPlayer,
-    SoundManager,
     AuthService
   ],
   bootstrap: [AppComponent]

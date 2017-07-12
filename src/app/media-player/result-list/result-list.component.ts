@@ -5,8 +5,6 @@ import { Response } from '@angular/http';
 import { MediaPlayerService } from '../media-player.service';
 import { Subscription } from 'rxjs/subscription';
 
-import * as _ from 'underscore';
-
 import { Song } from '../../shared/song.model';
 import { SearchHistoryService } from '../../search-history/search-history.service';
 import { SearchHistory } from '../../search-history/search-history.model';
@@ -28,7 +26,6 @@ export class ResultListComponent implements OnInit {
   songsList: Song[];
   hasNext: string = '';
   subscription: Subscription;
-  tooltipView: string = 'list';
   listView: boolean = true;
   config = {};
 
@@ -83,13 +80,3 @@ export class ResultListComponent implements OnInit {
   }
 
 }
-
-let pluckMany = function (source, propertiesToPluck: string[]) {
-  return _.map(source, function (item) {
-    var obj = {};
-    _.each(propertiesToPluck, function (property) {
-      obj[property] = item[property];
-    });
-    return obj;
-  });
-};

@@ -40,6 +40,11 @@ input.form-control:focus {
   padding: 0;
 }
 
+.tooltip-inner {
+  padding: 5px 10px;
+  color: #ffc520;
+}
+
 a {
   cursor: pointer;
   color: inherit;
