@@ -1,5 +1,4 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm, FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
@@ -10,15 +9,8 @@ import { AuthService } from '../auth.service';
 })
 export class SigninComponent implements OnInit {
 
-  // @HostListener('click') onclick(eventData: Event) {
-  //   console.log('log in...');
-  //   this.router.navigate(['']);
-  // }
-
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
