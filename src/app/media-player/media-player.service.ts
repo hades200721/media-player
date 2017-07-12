@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Song } from './result-list/result-item/result-item.model';
+import { Song } from '../shared/song.model';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()

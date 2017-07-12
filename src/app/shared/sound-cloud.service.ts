@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/subject';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs';
-import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Song } from './song.model';
 import { MediaPlayerService } from '../media-player/media-player.service';
 import { formatTime } from '../shared/helpers';
 

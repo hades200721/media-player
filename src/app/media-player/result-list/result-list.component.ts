@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs/subscription';
 
 import * as _ from 'underscore';
 
-import { Song } from '../result-list/result-item/result-item.model';
+import { Song } from '../../shared/song.model';
 import { SearchHistoryService } from '../../search-history/search-history.service';
 import { SearchHistory } from '../../search-history/search-history.model';
 

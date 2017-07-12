@@ -1,5 +1,5 @@
 
-import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Song } from '../shared/song.model';
 import { Events } from '../shared/event.model';
 
 export interface ISoundPlayer {

@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Subscription'
 import { DataStorageService } from '../shared/data-storage.service';
 import { PlaylistService } from './playlist.service';
 import { MediaPlayerService } from '../media-player/media-player.service';
-import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Song } from '../shared/song.model';
 
 @Component({
   selector: 'app-playlist',

@@ -6,7 +6,7 @@ import {
 import { MediaPlayerService } from '../media-player/media-player.service';
 import { SoundManager } from './sound-manager.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Song } from '../shared/song.model';
 import { Events } from '../shared/event.model';
 import { formatTime } from '../shared/helpers';
 
@@ -58,7 +58,6 @@ export class PlayerControlsComponent implements OnInit, OnDestroy {
 
     this.soundManager.on(Events.Time, (time: number) => {
       this.passedTime = time;
-      console.log(time);
     })
   }
 

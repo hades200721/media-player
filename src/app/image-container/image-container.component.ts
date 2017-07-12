@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MediaPlayerService } from '../media-player/media-player.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Song } from '../shared/song.model';
 
 @Component({
   selector: 'app-image-container',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Song } from '../shared/song.model';
 
 
 @Injectable()

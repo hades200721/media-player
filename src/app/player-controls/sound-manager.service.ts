@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SoundManagerSoundPlayer } from './sound-cloud-player-manager.service';
-import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Song } from '../shared/song.model';
 import { Events } from '../shared/event.model';
 import { ISoundPlayer } from './sound-player.interface';
 import { PlaylistService } from '../playlist/playlist.service';
@@ -135,9 +135,6 @@ export class SoundManager {
     }
 
     private publish(event, data: any) {
-
-        // console.log('Publish event:', event, data);
-        
         if (this.subscribers[event]) {
             this.subscribers[event].forEach(function (handler) {
                 handler(data);

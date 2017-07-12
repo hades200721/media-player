@@ -4,7 +4,7 @@ import 'rxjs';
 
 import { PlaylistService } from '../playlist/playlist.service';
 import { AuthService } from '../auth/auth.service';
-import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Song } from '../shared/song.model';
 
 const DATABASENAME = 'playlist';
 const SERVERNAME = 'https://music-player-55870.firebaseio.com/';

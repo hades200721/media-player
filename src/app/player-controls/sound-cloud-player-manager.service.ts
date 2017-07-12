@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Song } from '../media-player/result-list/result-item/result-item.model';
+import { Song } from '../shared/song.model';
 import { Events } from '../shared/event.model';
 import { ISoundPlayer } from './sound-player.interface';
 

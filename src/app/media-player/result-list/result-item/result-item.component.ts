@@ -3,7 +3,7 @@ import { MediaPlayerService } from '../../media-player.service';
 import { PlaylistService } from '../../../playlist/playlist.service';
 import { AuthService } from '../../../auth/auth.service';
 import { DataStorageService } from '../../../shared/data-storage.service';
-import { Song } from './result-item.model';
+import { Song } from '../../../shared/song.model';
 
 @Component({
   selector: 'app-result-item',
