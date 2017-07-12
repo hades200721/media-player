@@ -9,13 +9,14 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { AuthGuard } from './auth/auth.gaurd';
 
 
 const appRoutes: Routes = [
     { path: '', component: HomePageComponent },
     { path: 'search', component: MediaPlayerComponent },
     { path: 'search-history', component: SearchHistoryComponent },
-    { path: 'playlist', component: PlaylistComponent },
+    { path: 'playlist', component: PlaylistComponent, canActivate: [AuthGuard] },
     { path: 'wiki', component: WikipediaSearchComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'about', component: AboutComponent },
