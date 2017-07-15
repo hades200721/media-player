@@ -18,7 +18,10 @@ export class SoundManagerSoundPlayer implements ISoundPlayer {
             window['soundManager'].unload(this.lastSong.id);
             window['soundManager'].destroySound(this.lastSong.id);
         }
-        var soundObject = window['soundManager'].getSoundById(song.id);
+        let soundObject = window['soundManager'].getSoundById(song.id);
+        window['soundManager'].setup({
+            debugMode: false
+        });
         if (!soundObject) {
             soundObject = window['soundManager'].createSound({
                 url: soundCloudURI + song.id + '/stream' + '?client_id=' + soundCloudClientId,

@@ -53,7 +53,6 @@ import { PlayerControlsModule } from './player-controls/player-controls.module';
     LocalStorageService,
     DataStorageService,
     SearchHistoryService
-
   ],
   bootstrap: [AppComponent]
 })

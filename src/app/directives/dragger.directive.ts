@@ -1,20 +1,19 @@
 import {
-    Directive,
-    OnInit,
-    EventEmitter,
-    HostListener,
-    ElementRef,
-    Input,
-    Output
+    Directive, OnInit, EventEmitter,
+    HostListener, ElementRef, Input,
+    Output, Renderer, OnDestroy
 } from '@angular/core';
 
 @Directive({
     selector: '[draggable]'
 })
-export class Draggable implements OnInit {
+export class Draggable implements OnInit, OnDestroy {
 
     dragStart: boolean = false;
     mousedrag: any;
+
+    mouseMoveListener: any;
+    mouseUpListener: any;
 
     previousPosition: any;
     mouseup = new EventEmitter();
@@ -27,28 +26,46 @@ export class Draggable implements OnInit {
     onMousedown(event: MouseEvent) {
         this.previousPosition = { x: event.clientX, y: event.clientY };
         this.dragStart = true;
+
+        this.mouseMoveListener = this.renderer.listenGlobal('document', 'mousemove', (event) => {
+            if (this.dragStart) {
+                event.deltaX = event.clientX - this.previousPosition.x;
+                event.deltaY = event.clientY - this.previousPosition.y;
+                this.previousPosition = { x: event.clientX, y: event.clientY };
+                this.onDrag.emit(event);
+            }
+        });
+        this.mouseUpListener = this.renderer.listenGlobal('document', 'mouseup', (event) => {
+            if (this.dragStart) {
+                this.dragStart = false;
+                this.mouseup.emit(event);
+            }
+            this.mouseMoveListener();
+            this.mouseUpListener();
+        });
+
         this.mousedown.emit(event);
     }
 
-    @HostListener('mousemove', ['$event'])
-    onMousemove(event) {
-        if (this.dragStart) {
-            event.deltaX = event.clientX - this.previousPosition.x;
-            event.deltaY = event.clientY - this.previousPosition.y;
-            this.previousPosition = { x: event.clientX, y: event.clientY };
-            this.onDrag.emit(event);
-        }
-    }
+    // @HostListener('mousemove', ['$event'])
+    // onMousemove(event) {
+    //     if (this.dragStart) {
+    //         event.deltaX = event.clientX - this.previousPosition.x;
+    //         event.deltaY = event.clientY - this.previousPosition.y;
+    //         this.previousPosition = { x: event.clientX, y: event.clientY };
+    //         this.onDrag.emit(event);
+    //     }
+    // }
 
-    @HostListener('document:mouseup', ['$event'])
-    onMouseup(event: MouseEvent) {
-        if (this.dragStart) {
-            this.dragStart = false;
-            this.mouseup.emit(event);
-        }
-    }
+    // @HostListener('document:mouseup', ['$event'])
+    // onMouseup(event: MouseEvent) {
+    //     if (this.dragStart) {
+    //         this.dragStart = false;
+    //         this.mouseup.emit(event);
+    //     }
+    // }
 
-    constructor(public element: ElementRef) {
+    constructor(public element: ElementRef, public renderer: Renderer) {
 
         this.mousedrag = this.mousedown.map(
             (event: MouseEvent) => {
@@ -85,5 +102,10 @@ export class Draggable implements OnInit {
         // }
         //     }
         // });
+    }
+
+    ngOnDestroy() {
+        this.mouseMoveListener();
+        this.mouseUpListener();
     }
 }
