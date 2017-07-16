@@ -1,13 +1,12 @@
 import {
-    Directive, OnInit, EventEmitter,
-    HostListener, ElementRef, Input,
-    Output, Renderer, OnDestroy
+    Directive, EventEmitter, HostListener, ElementRef, 
+    Input, Output, Renderer
 } from '@angular/core';
 
 @Directive({
     selector: '[draggable]'
 })
-export class Draggable implements OnInit, OnDestroy {
+export class Draggable {
 
     dragStart: boolean = false;
     mousedrag: any;
@@ -47,24 +46,6 @@ export class Draggable implements OnInit, OnDestroy {
         this.mousedown.emit(event);
     }
 
-    // @HostListener('mousemove', ['$event'])
-    // onMousemove(event) {
-    //     if (this.dragStart) {
-    //         event.deltaX = event.clientX - this.previousPosition.x;
-    //         event.deltaY = event.clientY - this.previousPosition.y;
-    //         this.previousPosition = { x: event.clientX, y: event.clientY };
-    //         this.onDrag.emit(event);
-    //     }
-    // }
-
-    // @HostListener('document:mouseup', ['$event'])
-    // onMouseup(event: MouseEvent) {
-    //     if (this.dragStart) {
-    //         this.dragStart = false;
-    //         this.mouseup.emit(event);
-    //     }
-    // }
-
     constructor(public element: ElementRef, public renderer: Renderer) {
 
         this.mousedrag = this.mousedown.map(
@@ -84,28 +65,4 @@ export class Draggable implements OnInit, OnDestroy {
             );
     }
 
-    ngOnInit() {
-
-        // this.mousedrag.subscribe({
-        //     next: pos => {
-        // if (this.axisAllow === 'xy') {
-        //     this.elm.style.top = pos.top + 'px';
-        //     this.elm.style.left = pos.left + 'px';
-        // } else {
-        //     if (this.axisAllow === 'y') {
-        //         this.elm.style.top = pos.top + 'px';
-        //     } else {
-        //         if (this.axisAllow === 'x') {
-        //             this.elm.style.left = pos.left + 'px';
-        //         }
-        //     }
-        // }
-        //     }
-        // });
-    }
-
-    ngOnDestroy() {
-        this.mouseMoveListener();
-        this.mouseUpListener();
-    }
 }

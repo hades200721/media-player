@@ -6,6 +6,11 @@
   top: 0;
 }
 
+.router-outlet-wrapper {
+  height: 100%;
+  padding: 10px;
+}
+
 .main-page {
   height: 100%;
 }
