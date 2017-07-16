@@ -69,8 +69,9 @@ export class PlaylistComponent implements OnInit {
     event.stopPropagation();
   }
 
-  removeFromPlaylist(index: number) {
-    this.playlistService.removeSongFromPlaylist(index);
+  removeFromPlaylist(songId: number) {
+    const playlistItemIndex = this.playlistService.songExists(songId);
+    this.playlistService.removeSongFromPlaylist(playlistItemIndex);
     this.dataStorageService.savePlaylist();
     event.stopPropagation();
   }
