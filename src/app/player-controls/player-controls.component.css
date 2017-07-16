@@ -199,6 +199,10 @@
   background: url('../../assets/controls/shuffle.svg') no-repeat;   
 }
 
+.shuffle-on {
+  background: url('../../assets/controls/shuffle-on.svg') no-repeat;   
+}
+
 .repeat {
   background: url('../../assets/controls/repeat.svg') no-repeat;   
 }

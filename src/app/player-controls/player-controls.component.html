@@ -8,10 +8,10 @@
       </button>
       <button tooltip="Next song" [tooltipPlacement]="'top'" class="border-none ml2 play-control-icon next"
         (click)="soundManager.next()"></button>
-      <button tooltip="Shuffle playlist" [tooltipPlacement]="'top'" class="border-none ml2 play-control-icon shuffle"
+      <button tooltip="Shuffle playlist" [tooltipPlacement]="'top'" class="border-none ml2 play-control-icon shuffle" [class.shuffle-on]="soundManager.isShuffle()"
         (click)="soundManager.setShuffle()"></button>
       <button tooltip="{{'Loop ' + repeatOption[currentRepeatOption]}}" [tooltipPlacement]="'top'" class="border-none ml2 play-control-icon {{repeatOption[currentRepeatOption]}}"
-        (click)="currentRepeatOption = (currentRepeatOption + 1) % 3; soundManager.setLoop()">
+        (click)="onLoopClick()">
       </button>
 
       <!--TIMELINE-->

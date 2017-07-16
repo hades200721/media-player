@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Song } from '../shared/song.model';
+import { LoopOption } from '../shared/helpers';
 
 
 @Injectable()
@@ -31,17 +32,17 @@ export class PlaylistService {
         return index;
     }
 
-    findNextSong(id: number, loop: boolean, shuffle: boolean): Song {
+    findNextSong(id: number, loop: LoopOption, shuffle: boolean): Song {
         const songIndex = this.songExists(id);
         if (songIndex === -1) {
             return null;
         }
         if (shuffle) {
-            const rndIndex = Math.ceil(Math.random() * this.playlist.length); // random song from playlist array
+            const rndIndex = Math.floor(Math.random() * this.playlist.length); // random song from playlist array
             console.log('randmon index for song: ' + rndIndex);
             return this.playlist[rndIndex];
         }
-        if (loop && songIndex === (this.playlist.length - 1)) { // loop is on and current song is the last song
+        if (loop === LoopOption.all && songIndex === (this.playlist.length - 1)) { // loop is on and current song is the last song
             return this.playlist[0];
         }
         return this.playlist[songIndex + 1];
@@ -53,7 +54,7 @@ export class PlaylistService {
             return null;
         }
         if (shuffle) {
-            const rndIndex = Math.ceil(Math.random() * this.playlist.length); // random song from playlist array
+            const rndIndex = Math.floor(Math.random() * this.playlist.length); // random song from playlist array
             console.log('randmon index for song: ' + rndIndex);
             return this.playlist[rndIndex];
         }

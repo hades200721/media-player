@@ -1,3 +1,9 @@
+export enum LoopOption {
+    none = 0,
+    one = 1,
+    all = 2
+}
+
 export function formatTime(duration: number) {
     if (!duration) {
         return '00:00';

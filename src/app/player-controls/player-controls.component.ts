@@ -8,7 +8,7 @@ import { SoundManager } from './sound-manager.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Song } from '../shared/song.model';
 import { Events } from '../shared/event.model';
-import { formatTime } from '../shared/helpers';
+import { formatTime, LoopOption } from '../shared/helpers';
 
 @Component({
   selector: 'app-player-controls',
@@ -63,6 +63,11 @@ export class PlayerControlsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onLoopClick() {
+    this.currentRepeatOption = (this.currentRepeatOption + 1) % 3; 
+    this.soundManager.setLoop(LoopOption[this.currentRepeatOption]);
   }
 
   progressHandlerPosition() {

@@ -5,6 +5,7 @@ import { Events } from '../shared/event.model';
 import { ISoundPlayer } from './sound-player.interface';
 import { PlaylistService } from '../playlist/playlist.service';
 import { MediaPlayerService } from '../media-player/media-player.service';
+import { LoopOption } from '../shared/helpers';
 
 @Injectable()
 export class SoundManager {
@@ -14,7 +15,7 @@ export class SoundManager {
     private currentSong: Song;
     private playing = false;
     private shuffle = false;
-    private loop = false;
+    private loop:LoopOption = LoopOption.none;
 
     constructor(
         private soundManagerSoundPlayer: SoundManagerSoundPlayer,
@@ -48,8 +49,8 @@ export class SoundManager {
         return this.loop;
     }
 
-    setLoop() {
-        this.loop = !this.loop;
+    setLoop(loopOpt: string) {
+        this.loop = LoopOption[loopOpt];
     }
 
     getVolume(): number {
@@ -91,14 +92,14 @@ export class SoundManager {
     }
 
     next() {
-        let song = this.playlistService.findNextSong(this.currentSong.id, this.loop, this.shuffle);
+        let song = (this.loop === LoopOption.one) ? this.currentSong : this.playlistService.findNextSong(this.currentSong.id, this.loop, this.shuffle);
         if (song) {
             this.mediaPlayerService.setSelectedSong(song);
         }
     }
 
     previous() {
-        let song = this.playlistService.findPreviousSong(this.currentSong.id, this.shuffle);
+        let song = (this.loop === LoopOption.one) ? this.currentSong : this.playlistService.findPreviousSong(this.currentSong.id, this.shuffle);
         if (song) {
             this.mediaPlayerService.setSelectedSong(song);
         }
@@ -147,12 +148,13 @@ export class SoundManager {
     }
 
     onSongFinish() {
-        // var nextSong = this.playlistService.next();
-        // if (nextSong) {
-        //     this.play(nextSong);
-        // } else {
-        //     this.publish(Events.Finish, null);
-        // }
+        const loopOption = this.loop;
+        let nextSong = (loopOption === LoopOption.one) ? this.currentSong : this.playlistService.findNextSong(this.currentSong.id, this.loop, this.shuffle);;
+        if (nextSong) {
+            this.mediaPlayerService.setSelectedSong(nextSong);
+        } else {
+            this.publish(Events.Finish, null);
+        }
     }
 
     subscribSoundPlayerEvent(soundPlayer: ISoundPlayer) {
